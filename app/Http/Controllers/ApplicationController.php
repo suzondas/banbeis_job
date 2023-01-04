@@ -23,7 +23,7 @@ class ApplicationController extends Controller
         $application->save();
 
         $job = Job::Find($job_id);
-        return view('jobs/show', compact('job'));
+        return redirect()->back();
 
         //return redirect('/jobs/show/{employeer->job_id}');
     }

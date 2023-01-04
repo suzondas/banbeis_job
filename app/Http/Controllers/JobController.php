@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Job;
 use App\Category;
-use Auth;
-
+//use Auth;
+use Illuminate\Support\Facades\Auth;
 class JobController extends Controller
 {
     /**
@@ -70,10 +70,11 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
+
         //
         $job = new Job();
-        //return response()->json($request);
-        $job->employeer_id = Auth::user('employeer')->id;
+//        return response()->json($request);
+        $job->employeer_id = Auth::guard('employeer')->id();
         $job->category = $request->category_name;
         $job->job_context = $request->job_context;
         $job->keywords = $request->keywords;
@@ -91,6 +92,8 @@ class JobController extends Controller
         $job->salary = $request->salary;
         $job->benifits = $request->benifits;
         $job->apply_instruction = $request->apply_instruction;
+        $job->experience='blank';
+         $job->address='blank';
 
         $job->save();
         Category::where('category_name', '=' , $request->category_name)->increment('no_jobs', 1);
@@ -106,6 +109,7 @@ class JobController extends Controller
     public function show($job_id)
     {
         //
+//        dd(Auth::guard());
         $job = Job::Find($job_id);
         return view('jobs/show', compact('job'));
     }

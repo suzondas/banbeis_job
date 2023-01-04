@@ -12,7 +12,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Job Search | Opportunity</title>
+        <title>Job Search | Banbeis</title>
 
         <style type="text/css">
           body
@@ -108,8 +108,8 @@
               <div class="card-body">
                 <div class="form-row">
                   <div class="pb-3">
-                    <h2 class="font-weight-bold">Find your opportunity in Bangladesh</h2>
-                    <small>Opportunity helps people to get jobs and hire employee</small>
+                    <h2 class="font-weight-bold">Find your opportunity in BANBEIS</h2>
+                    <small></small>
                   </div>
                 </div>
                  <div class="form-row p-0 mt-2" style="border-radius: 8px; border: solid 0px #f2f2f2">
@@ -132,7 +132,7 @@
           <!-- <div class="container-fluid p-3" id="about" style="text-align: center">
             <p style="font-family: ; font-weight: bold">Opportunity helps people to get jobs and hire employee</p>
           </div> -->
-          <div class="container-fluid mt-4" style="width:100%; ">
+          <!-- <div class="container-fluid mt-4" style="width:100%; ">
             <h4 class="text-center">
               <img src="https://www.pinclipart.com/picdir/big/198-1980971_sixdays-bremen-transparent-loading-circle-gif-clipart.png" width="20px" height="20px"/><b> pportunity Offers</b>
             </h4>
@@ -156,9 +156,30 @@
                     </a>
                   </div>
             </div>
-          </div>
+          </div> -->
+          <div class="row m-2 p-4">
+              <div class="col-lg-12">
+                <h4 class="text-center"><b>Latest Jobs</b></h4>
+                <ul class="list-group list-group-flush">
+                 @foreach(Job::orderBy('updated_at', 'desc')->take(4)->get() as $job)
+                    <a href='/jobs/show/{{$job->job_id}}' class="list-group-item d-flex justify-content-between align-items-center pb-0">
+                      <h6 class="font-weight-bold" style="-webkit-box-shadow: 10px -5px 20px -4px rgb(0 0 0 / 75%); -moz-box-shadow: 10px -5px 20px -4px rgba(0,0,0,0.75); box-shadow: 10px -5px 20px -4px rgb(0 0 0 / 75%); padding: 20px;">
+                          <small><label class="text-muted far fa-clock"> {{to_time_ago(strtotime($job->updated_at))}}</label></small><br>
+                          {{$job->title}}<br>
+                          @foreach(Employeer::where('id', '=', $job->employeer_id)->get() as $company)
+                            <label class="text-muted">{{ $company->name }}</label>
+                          @endforeach
+                        </h6> 
+                        <!-- <span><small><i class="fas fa-chevron-right"></i></small></span> -->
+                    </a>
+                  @endforeach
+                </ul>
+                <div class="row mx-auto p-4">
+                   <small><a class="text-center" href="/jobs">View all</a></small>
+                </div>
+              </div>
            </div>
-          <div class="container-fluid p-4" style="width:100%; ">
+          <!-- <div class="container-fluid p-4" style="width:100%; ">
             <div class="row m-2 p-4">
               <div class="col-lg-6">
                 <h4 class="text-center"><b>Latest Jobs</b></h4>
@@ -252,8 +273,8 @@
                   </div>
               </div>
             </div>
-          </div>
-          <div class="container-fluid p-4" style="width:100%; ">
+          </div> -->
+          <!-- <div class="container-fluid p-4" style="width:100%; ">
             <h4 class="text-center"><b>Browse Job Categories</b></h4>
             <div class="row m-2 mx-auto p-2 d-flex justify-content-center">
                @foreach(Category::all() as $category)
@@ -280,7 +301,7 @@
                   </div>
                 @endforeach
             </div>
-          </div>
+          </div> -->
           
     </body>
 </html>
