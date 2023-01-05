@@ -25,6 +25,7 @@
 					<th>Job Title</th>
 					<th>Company</th>
 					<th>Applied Date</th>
+					<th>Action</th>
 				</thead>
 				<tbody>
 					@php

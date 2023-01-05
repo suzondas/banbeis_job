@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Opportunity</title>
+        <title>BANBEIS JOB</title>
         <link rel="icon" href="icon.png" type="image/icon type">
 
         <style type="text/css">

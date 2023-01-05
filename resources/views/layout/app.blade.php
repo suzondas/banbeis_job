@@ -186,7 +186,7 @@ use App\Employeer;
         <img src="https://www.pinclipart.com/picdir/big/198-1980971_sixdays-bremen-transparent-loading-circle-gif-clipart.png" width="20px" height="20px"/><b> pportunity</b>
     </div>
     <div class="col-lg-2 p-4">
-        <li>About Opportunity</li>
+        <li>About BANBEIS</li>
         <li>Terms</li>
         <li>Privacy Policy</li>
     </div>
@@ -196,7 +196,7 @@ use App\Employeer;
 
     </div>
     <div class="col-lg-2 p-4">
-        <li><a href="/">Worked at Opportunity</a></li>
+        <li><a href="/">Worked at BANBEIS</a></li>
         <li>Terms</li>
 
     </div>

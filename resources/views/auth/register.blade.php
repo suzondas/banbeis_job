@@ -10,8 +10,7 @@
         <div class="col-md-12">
             <div class="card" style="border:solid 1px white; border-radius: 10px;">
                 <div class="card-header bg-white text-center" style="border:solid 1px white;">
-                    Join with <img src="https://www.pinclipart.com/picdir/big/198-1980971_sixdays-bremen-transparent-loading-circle-gif-clipart.png" width="20px" height="20px"/><b> pportunity</b>
-                    <h6 class="mt-5">{{ isset($url) ? ucwords($url) : ""}} {{ __('Registration') }}</h6>
+              <h3>      Join with BANBEIS</h3><h4 class="mt-5">{{ isset($url) ? ucwords($url) : ""}} {{ __('Registration') }}</h4>
                 </div>
                     <div class="card-body bg-light" style="border-radius: 10px;">
                         @isset($url)

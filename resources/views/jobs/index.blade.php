@@ -11,7 +11,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Opportunity</title>
+        <title>BANBEIS JOB</title>
 
         <style type="text/css">
           .list-group
@@ -204,37 +204,8 @@
             @endif
           </div>
           <div class="row">
-            <div class="col-lg-3 pl-4">
-                <ul class="list-group">
-                  <li class="list-group-item d-flex bg-light justify-content-between align-items-center">
-                    <b>Skills</b>
-                  </li>
-                  <a href='/' class="list-group-item d-flex justify-content-between align-items-center">
-                      Fullstack
-                      <span class="badge badge-light badge-pill p-2">14</span>
-                  </a>
-                  
-                  <a href='/'  class="list-group-item d-flex justify-content-between align-items-center">
-                    Forntend
-                    <span class="badge badge-light badge-pill p-2">2</span>
-                  </a>
-                  <a href='/'  class="list-group-item d-flex justify-content-between align-items-center">
-                    Backend
-                    <span class="badge badge-light badge-pill  p-2">1</span>
-                  </a>
-                  <a href='/'  class="list-group-item d-flex justify-content-between align-items-center">
-                   Java
-                    <span class="badge badge-light badge-pill p-2">14</span>
-                  </a>
-                  <a href='/'  class="list-group-item d-flex justify-content-between align-items-center">
-                    ASP.NET
-                    <span class="badge badge-light badge-pill p-2">2</span>
-                  </a>
-                  <a href='/'  class="list-group-item d-flex justify-content-between align-items-center">
-                    PHP/Laravel
-                    <span class="badge badge-light badge-pill p-2">1</span>
-                 </a>
-                </ul>
+            <div class="col-lg-3 pl-4" style="background:url('https://cdn4.vectorstock.com/i/1000x1000/91/83/we-are-hiring-banner-in-blue-vector-34649183.jpg')  no-repeat center center;">
+                
             </div>
             <div class="col-lg-6">
               @if ($jobs->count() == 0)
@@ -263,7 +234,7 @@
                       </li>
                       <small id="job_post_link">
                         <label><!-- <i style="color:#999999" class="far fa-clock"></i> --> {{to_time_ago(strtotime($job->updated_at))}} <i style="color:#b3b3b3">&#8226; </i></label>
-                        <a href="/jobs/edit/{{$job->job_id}}" style="text-decoration: ; color: #0052cc">Save Job</a>
+                        {{-- <a href="/jobs/edit/{{$job->job_id}}" style="text-decoration: ; color: #0052cc">Save Job</a> --}}
                         <!-- <a href="/jobs/edit/{{$job->job_id}}" style="text-decoration: ; color: #0052cc">Edit</a> <i style="color:#b3b3b3">&#8226; </i>
                         <a href="/jobs/delete/{{$job->job_id}}" style="text-decoration: ; color: #0052cc">Remove</a> -->
                       </small>
