@@ -78,15 +78,15 @@
 			        @endforeach
 			      </select>
 				  </div>
-				  <div class="form-group col-md-9">
+				  {{-- <div class="form-group col-md-9">
 				    <label>Keyword</label>
 				    <textarea class="form-control"  rows="1" name="keywords"></textarea>
-				  </div>
+				  </div> --}}
 			  </div>
-			  <div class="form-group">
+			  {{-- <div class="form-group">
 			    <label for="exampleFormControlTextarea1">Job Context</label>
 			    <textarea class="form-control" rows="3" name="job_context"></textarea>
-			  </div>
+			  </div> --}}
 			  <div class="form-row">
 				  <div class="form-group col-md-6">
 				    <label for="exampleFormControlTextarea1">Job Responsibilities</label>
@@ -98,7 +98,7 @@
 				  </div>
 			  </div>
 			  <div class="form-group">
-				    <label for="exampleFormControlTextarea1">Experience Requiresments</label>
+				    <label for="exampleFormControlTextarea1">Experience Requirements</label>
 				    <textarea class="form-control" rows="5" name="requirements"></textarea>
 			  </div>
 			  <div class="form-group">

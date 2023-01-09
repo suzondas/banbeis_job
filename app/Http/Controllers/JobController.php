@@ -76,8 +76,9 @@ class JobController extends Controller
 //        return response()->json($request);
         $job->employeer_id = Auth::guard('employeer')->id();
         $job->category = $request->category_name;
-        $job->job_context = $request->job_context;
-        $job->keywords = $request->keywords;
+        // $job->job_context = $request->job_context;
+        $job->job_context = "";
+        $job->keywords = "";
         $job->title = $request->title;
         $job->vacancy = $request->vacancy;
         $job->deadline = $request->deadline;

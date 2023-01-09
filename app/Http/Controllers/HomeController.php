@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Education;
+use App\General_info;
 use App\User;
 
 class HomeController extends Controller
@@ -31,8 +32,9 @@ class HomeController extends Controller
     public function view_profile()
     {
         $id = Auth::user()->id;
-        $education = Education::orderBy('passing_year','desc')->where('user_id', '=' , $id)->get();
-        return view('users.view_profile', compact('education'));
+        $general_info = General_info::where('user_id', '=' , $id)->first();
+       
+        return view('users.view_profile', compact('general_info'));
     }
     public function edit_profile()
     {

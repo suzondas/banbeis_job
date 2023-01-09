@@ -82,5 +82,6 @@ Route::view('/user', 'user');
 Route::get('/apply/{job_id}', 'ApplicationController@create');
 Route::get('/employees/applicants/{job_id}', 'ApplicationController@show_applicants');
 
+Route::post('/users/save_general_info', 'General_infoController@store');
 
 

@@ -132,10 +132,13 @@
                                 <button type="button" class="btn btn-primary btn btn-block mb-2"><b>Apply this job</b>
                                 </button>
                             </a>
+                            <span class="text-danger">Before Apply make sure you completed your profile</span>
                             {{--<button type="button" class="btn btn-light btn btn-block"><b>Save for later</b></button>--}}
                         @endif
+                    @elseif(Auth::guard('employeer')->check())
+                        
                     @else
-                        <a href="{{url('login')}}">
+                    <a href="{{url('login')}}">
                             <button type="button" class="btn btn-primary btn btn-block mb-2"><b>Apply this job</b>
                             </button>
                         </a>

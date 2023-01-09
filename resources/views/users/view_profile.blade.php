@@ -14,16 +14,31 @@
             background: skyblue !important;
         }
     </style>
+    
+</head>
 <body>
 <div id="app">
+    @if(session()->get('errors'))
+    toastr.error("{{ session()->get('errors')->first() }}");
+@endif
     <div class="container-fluid text-center" style="margin: 0; margin-top: 8%">
         <h2 class="text-center pt-2">Your Profile</h2>
     </div>
 
     <div class="container pt-5"
          style="-webkit-box-shadow: 10px 10px 33px 0px rgba(0,0,0,0.75); -moz-box-shadow: 10px 10px 33px 0px rgba(0,0,0,0.75); box-shadow: 10px 10px 33px 0px rgba(0,0,0,0.75);">
-
-        <form class="form-horizontal">
+        <nav class="mt-2">
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">General Information</a>
+                <a class="nav-item nav-link" id="nav-education-tab" data-toggle="tab" href="#nav-education" role="tab" aria-controls="nav-education" aria-selected="false">Educational Qualifications</a>
+                <a class="nav-item nav-link" id="nav-experience-tab" data-toggle="tab" href="#nav-experience" role="tab" aria-controls="nav-experience" aria-selected="false">experience</a>
+            </div>
+        </nav>
+      <div class="tab-content" id="nav-tabContent">
+<h2 class="text-center p-5 text-success">General Information</h2>
+        <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            
+        <form class="form-horizontal" method="POST" action="save_general_info" enctype="multipart/form-data">
             <fieldset>
 
                 <!-- Form Name -->
@@ -33,8 +48,8 @@
                     <div class="row">
                         <label class="col-md-4 control-label" for="Applicant's Name">Applicant's Name</label>
                         <div class="col-md-5">
-                            <input id="Applicant's Name" name="Applicant's Name" type="text" placeholder="Type here..."
-                                   class="form-control input-md" required="">
+                            <input value="{{isset($general_info)?$general_info->name:''}}" id="Applicant's Name" name="name" type="text" placeholder="Type here..."
+                                   class="form-control input-md" required="required">
 
                         </div>
                     </div>
@@ -47,7 +62,7 @@
                         <label class="col-md-4 control-label" for="fathers_name">Father's Name</label>
                         <div class="col-md-5">
                             <input id="fathers_name" name="fathers_name" type="text" placeholder="Type here"
-                                   class="form-control input-md" required="">
+                                   class="form-control input-md" required="" value="{{isset($general_info)?$general_info->fathers_name:''}}">
 
                         </div>
                     </div>
@@ -60,7 +75,7 @@
                         <label class="col-md-4 control-label" for="mothers_name">Mother's Name</label>
                         <div class="col-md-5">
                             <input id="mothers_name" name="mothers_name" type="text" placeholder="Type here..."
-                                   class="form-control input-md" required="">
+                                   class="form-control input-md" required="" value="{{isset($general_info)?$general_info->mothers_name:''}}">
 
                         </div>
                     </div>
@@ -71,18 +86,21 @@
                     <div class="row">
                         <label class="col-md-4 control-label" for="gender">Gender</label>
                         <div class="col-md-4">
-                            <div class="radio">
-                                <label for="gender-0">
-                                    <input type="radio" name="gender" id="gender-0" value="1">
-                                    Male
-                                </label>
-                            </div>
-                            <div class="radio">
-                                <label for="gender-1">
-                                    <input type="radio" name="gender" id="gender-1" value="2">
-                                    Female
-                                </label>
-                            </div>
+                            <select name="gender">
+                                <option>Select</option>
+                                <option value="male"
+                                @if(isset($general_info))
+                                @if($general_info->gender=='male')
+                                selected
+                                @endif
+                                @endif>Male</option>
+                                <option value="female"
+                                @if(isset($general_info))
+                                @if($general_info->gender=='female')
+                                selected
+                                @endif
+                                @endif>Female</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -95,7 +113,7 @@
                         <div class="col-md-3">
                             <input id="dob" name="dob" type="date" placeholder="Type here..."
                                    class="form-control input-md"
-                                   required="">
+                                   required="" value="{{isset($general_info)?$general_info->dob:''}}">
 
                         </div>
                     </div>
@@ -108,24 +126,36 @@
                         <label class="col-md-4 control-label" for="nid">NID / Birth Registration Number</label>
                         <div class="col-md-5">
                             <div class="">
-                                <label><input type="radio" name="nidYN" value="1"/> NID:</label>
+                                <label><input type="radio" name="nid_or_birth_reg_num" value="1"
+                                    @if(isset($general_info))
+                                    @if($general_info->nid_or_birth_reg_num=='1')
+                                    checked
+                                    @endif
+                                    @endif
+                                    /> NID:</label>
                                 <br>
                                 <input id="nid" name="nid"
                                        class="form-control"
                                        placeholder="Type here ..."
-                                       type="text" required="">Upload NID:<br><input type="file"/>
+                                       type="text" required="" value="{{isset($general_info)?$general_info->nid:''}}">Upload NID:<br><input type="file"/>
 
                             </div>
                             <br>
                             <div class="">
-                                <label> <input type="radio" name="nidYN" value="2"/> Birth Registration
+                                <label> <input type="radio" name="nid_or_birth_reg_num" value="2"
+                                    @if(isset($general_info))
+                                    @if($general_info->nid_or_birth_reg_num=='2')
+                                    checked
+                                    @endif
+                                    @endif
+                                    /> Birth Registration
                                     Number:</label><br>
                                 <input id="birth"
-                                       name="nid"
+                                       name="birth_reg_num"
                                        class="form-control"
                                        placeholder="Type here ..."
                                        type="text"
-                                       required="">Upload Birth Registration Certificate:<br><input type="file"/>
+                                       required="" value="{{isset($general_info)?$general_info->birth_reg_num:''}}">Upload Birth Registration Certificate:<br><input type="file"/>
 
                             </div>
                         </div>
@@ -171,26 +201,26 @@
                         <div class="col-md-5">
                             <div class="row">
                                 <div class="col-md-6">
-                                    Care of: <input type="text" class="form-control" name="careof"/>
+                                    Care of: <input type="text" class="form-control" name="care_of" value="{{isset($general_info)?$general_info->care_of:''}}"/>
                                 </div>
                                 <div class="col-md-6">
-                                    Village: <input type="text" class="form-control" name="village"/>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    District: <input type="text" class="form-control" name="district"/>
-                                </div>
-                                <div class="col-md-6">
-                                    Upazila: <input type="text" class="form-control" name="upazila"/>
+                                    Village: <input type="text" class="form-control" name="village" value="{{isset($general_info)?$general_info->village:''}}"/>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    Post Office: <input type="text" class="form-control" name="post"/>
+                                    District: <input type="text" class="form-control" name="district" value="{{isset($general_info)?$general_info->district:''}}"/>
                                 </div>
                                 <div class="col-md-6">
-                                    Post Code: <input type="text" class="form-control" name="poscode"/>
+                                    Upazila: <input type="text" class="form-control" name="upazila" value="{{isset($general_info)?$general_info->upazila:''}}"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    Post Office: <input type="text" class="form-control" name="post_office" value="{{isset($general_info)?$general_info->post_office:''}}"/>
+                                </div>
+                                <div class="col-md-6">
+                                    Post Code: <input type="text" class="form-control" name="post_code" value="{{isset($general_info)?$general_info->post_code:''}}"/>
                                 </div>
                             </div>
                         </div>
@@ -203,32 +233,48 @@
                         <label class="col-md-4 control-label" for="marital_status">Mailing Address</label>
                         <div class="col-md-5">
                             <div class="row">
-                                <label><input v-model="as_present_address" type="checkbox" class=""/> As Present Address</label>
+                                {{-- {{$general_info->is_pa_ma}} --}}
+                                <label><select class="" name="is_pa_ma">
+                                    <option value="1"
+                                    @if(isset($general_info))
+                                    @if($general_info->is_pa_ma=='1')
+                                    selected
+                                    @endif
+                                    @endif
+                                    > Present Address</option>
+                                    <option value="2"
+                                    @if(isset($general_info))
+                                    @if($general_info->is_pa_ma=='2')
+                                    selected
+                                    @endif
+                                    @endif
+                                    > Different Address</option>
+                                is_pa_ma</select></label>
                             </div>
 
-                            <div v-if="!as_present_address">
+                            <div v-if="!is_pa_ma">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        Care of: <input type="text" class="form-control" name="careof"/>
+                                        Care of: <input type="text" class="form-control" name="ma_care_of" value="{{isset($general_info)?$general_info->ma_care_of:''}}"/>
                                     </div>
                                     <div class="col-md-6">
-                                        Village: <input type="text" class="form-control" name="village"/>
+                                        Village: <input type="text" class="form-control" name="ma_village" value="{{isset($general_info)?$general_info->ma_village:''}}"/>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        District: <input type="text" class="form-control" name="district"/>
+                                        District: <input type="text" class="form-control" name="ma_district" value="{{isset($general_info)?$general_info->ma_district:''}}"/>
                                     </div>
                                     <div class="col-md-6">
-                                        Upazila: <input type="text" class="form-control" name="upazila"/>
+                                        Upazila: <input type="text" class="form-control" name="ma_upazila" value="{{isset($general_info)?$general_info->ma_upazila:''}}"/>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        Post Office: <input type="text" class="form-control" name="post"/>
+                                        Post Office: <input type="text" class="form-control" name="ma_post_office" value="{{isset($general_info)?$general_info->ma_post_office:''}}"/>
                                     </div>
                                     <div class="col-md-6">
-                                        Post Code: <input type="text" class="form-control" name="poscode"/>
+                                        Post Code: <input type="text" class="form-control" name="ma_post_code" value="{{isset($general_info)?$general_info->ma_post_code:''}}"/>
                                     </div>
                                 </div>
                             </div>
@@ -244,7 +290,7 @@
                         <div class="col-md-5">
                             <input id="email" name="email" type="text" placeholder="Type here"
                                    class="form-control input-md"
-                                   required="">
+                                   required="" value="{{isset($general_info)?$general_info->email:''}}">
 
                         </div>
                     </div>
@@ -256,10 +302,11 @@
 
                         <label class="col-md-4 control-label" for="contact_number">Contact Number</label>
                         <div class="col-md-5">
-                            <input id="contact_number" name="contact_number" type="text" placeholder="Type Here"
-                                   class="form-control input-md" required="">
+                            <input id="contact_number" name="contact_num" type="text" placeholder="Type Here"
+                                   class="form-control input-md" required="" value="{{isset($general_info)?$general_info->contact_num:''}}">
                             <div class="row pl-3">
-                                <label><input type="checkbox" class=""/> Whatsapp available</label>
+                                <label>Whatsapp available: <select name="is_contact_num_whatsapp"><option value="1">Yes</option>
+                                    <option value="2">No</option></select></label>
                             </div>
                         </div>
                     </div>
@@ -268,14 +315,26 @@
                     <div class="row">
                         <label class="col-md-4 control-label" for="contact_number">Student ID (If any)</label>
                         <div class="col-md-5">
-                            Upload ID Card:<br><input type="file"/>
+                            Upload ID Card:<br><input type="file" name="student_file"/>
                         </div>
                     </div>
                 </div>
+            </fieldset>
 
+            <hr>
+            @csrf
+            <div class="container bg-light">
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-primary">Save & Next</button>
+                </div>
+            </div>
+            <br>
+        </form>
+    </div>
 
-                <!-- Select Basic -->
-                <hr class="p-2">
+    <div class="tab-pane fade" id="nav-education" role="tabpanel" aria-labelledby="nav-education-tab">
+
+        <hr class="p-2">
                 <h3>Educational Qualifications</h3>
                 <!-- Select Basic-- Result_table -->
                 <div class="container">
@@ -409,129 +468,121 @@
                         </table>
                     </div>
                 </div>
-
-                <hr>
-                <div class="">
-                    <h3 align="center"> Experience</h3>
-                    <br>
-                    <h4>(A) BANBEIS Survey and Census</h4>
-                    <!-- Select Basic -->
-
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                        <tr>
-                            <th>Name of Experience</th>
-                            <th>Status</th>
-                            <th>Year of Experience</th>
-                            <th>Upload Certificate</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>1. English Medium School
-                                Survey
-                            </td>
-                            <td>
-                                <select id="english_medium" name="english_medium" class="form-control">
-                                    <option>Select</option>
-                                    <option value="1">Yes</option>
-                                    <option value="2">No</option>
-                                </select>
-                            </td>
-                            <td><input type="number"/></td>
-                            <td><input type="file"/></td>
-                        </tr>
-                        <tr>
-                            <td>2. BANBEIS PEC Survey
-                            </td>
-                            <td>
-                                <select id="" name="" class="form-control">
-                                    <option>Select</option>
-                                    <option value="1">Yes</option>
-                                    <option value="2">No</option>
-                                </select>
-                            </td>
-                            <td><input type="number"/></td>
-                            <td><input type="file"/></td>
-                        </tr>
-                        <tr>
-                            <td>3. Primary PEC Survey
-                            </td>
-                            <td>
-                                <select id="" name="" class="form-control">
-                                    <option>Select</option>
-                                    <option value="1">Yes</option>
-                                    <option value="2">No</option>
-                                </select>
-                            </td>
-                            <td><input type="number"/></td>
-                            <td><input type="file"/></td>
-                        </tr>
-                        <tr>
-                            <td>4. CSSR Survey
-                            </td>
-                            <td>
-                                <select id="" name="" class="form-control">
-                                    <option>Select</option>
-                                    <option value="1">Yes</option>
-                                    <option value="2">No</option>
-                                </select>
-                            </td>
-                            <td><input type="number"/></td>
-                            <td><input type="file"/></td>
-                        </tr>
-                        <tr>
-                            <td>5. Teacher Attrition Survey
-                            </td>
-                            <td>
-                                <select id="" name="" class="form-control">
-                                    <option>Select</option>
-                                    <option value="1">Yes</option>
-                                    <option value="2">No</option>
-                                </select>
-                            </td>
-                            <td><input type="number"/></td>
-                            <td><input type="file"/></td>
-                        </tr>
-                        <tr>
-                            <td>6. TVET Survey
-                            </td>
-                            <td>
-                                <select id="" name="" class="form-control">
-                                    <option>Select</option>
-                                    <option value="1">Yes</option>
-                                    <option value="2">No</option>
-                                </select>
-                            </td>
-                            <td><input type="number"/></td>
-                            <td><input type="file"/></td>
-                        </tr>
-
-                        </tbody>
-                    </table>
-
-
-                    <br><h4>(B) Add other Survey Experience:</h4>
-                    <div class="form-group" >
-                        <label class="col-md-4 control-label" for="tvet_survey"> Description of Expericnce</label>
-                        <div class="col-md-8">
-                            <textarea class="form-control"></textarea>
-                            Upload Experience Certificate:<br><input type="file"/>
-                        </div>
-                    </div>
-                </div>
-            </fieldset>
-
-            <hr>
-            <div class="container bg-light">
-                <div class="col-md-12 text-center">
-                    <button type="button" class="btn btn-primary">Update</button>
-                </div>
-            </div>
-            <br>
-        </form>
-
     </div>
+    <div class="tab-pane fade" id="nav-experience" role="tabpanel" aria-labelledby="nav-experience-tab">
+
+    <div class="">
+        <h3 align="center"> Experience</h3>
+        <br>
+        <h4>(A) BANBEIS Survey and Census</h4>
+        <!-- Select Basic -->
+
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Name of Experience</th>
+                <th>Status</th>
+                <th>Year of Experience</th>
+                <th>Upload Certificate</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1. English Medium School
+                    Survey
+                </td>
+                <td>
+                    <select id="english_medium" name="english_medium" class="form-control">
+                        <option>Select</option>
+                        <option value="1">Yes</option>
+                        <option value="2">No</option>
+                    </select>
+                </td>
+                <td><input type="number"/></td>
+                <td><input type="file"/></td>
+            </tr>
+            <tr>
+                <td>2. BANBEIS PEC Survey
+                </td>
+                <td>
+                    <select id="" name="" class="form-control">
+                        <option>Select</option>
+                        <option value="1">Yes</option>
+                        <option value="2">No</option>
+                    </select>
+                </td>
+                <td><input type="number"/></td>
+                <td><input type="file"/></td>
+            </tr>
+            <tr>
+                <td>3. Primary PEC Survey
+                </td>
+                <td>
+                    <select id="" name="" class="form-control">
+                        <option>Select</option>
+                        <option value="1">Yes</option>
+                        <option value="2">No</option>
+                    </select>
+                </td>
+                <td><input type="number"/></td>
+                <td><input type="file"/></td>
+            </tr>
+            <tr>
+                <td>4. CSSR Survey
+                </td>
+                <td>
+                    <select id="" name="" class="form-control">
+                        <option>Select</option>
+                        <option value="1">Yes</option>
+                        <option value="2">No</option>
+                    </select>
+                </td>
+                <td><input type="number"/></td>
+                <td><input type="file"/></td>
+            </tr>
+            <tr>
+                <td>5. Teacher Attrition Survey
+                </td>
+                <td>
+                    <select id="" name="" class="form-control">
+                        <option>Select</option>
+                        <option value="1">Yes</option>
+                        <option value="2">No</option>
+                    </select>
+                </td>
+                <td><input type="number"/></td>
+                <td><input type="file"/></td>
+            </tr>
+            <tr>
+                <td>6. TVET Survey
+                </td>
+                <td>
+                    <select id="" name="" class="form-control">
+                        <option>Select</option>
+                        <option value="1">Yes</option>
+                        <option value="2">No</option>
+                    </select>
+                </td>
+                <td><input type="number"/></td>
+                <td><input type="file"/></td>
+            </tr>
+
+            </tbody>
+        </table>
+
+
+        <br><h4>(B) Add other Survey Experience:</h4>
+        <div class="form-group" >
+            <label class="col-md-4 control-label" for="tvet_survey"> Description of Expericnce</label>
+            <div class="col-md-8">
+                <textarea class="form-control"></textarea>
+                Upload Experience Certificate:<br><input type="file"/>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
 </div>
 <script type="text/javascript">
 
@@ -539,7 +590,7 @@
         el: '#app',
         data: {
             items: [],
-            as_present_address:false
+            is_pa_ma:false
         },
         methods: {}
     })

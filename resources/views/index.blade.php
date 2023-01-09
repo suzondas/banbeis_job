@@ -160,8 +160,9 @@
           <div class="row m-2 p-4">
               <div class="col-lg-12">
                 <h4 class="text-center"><b>Latest Jobs</b></h4>
-                <ul class="list-group list-group-flush">
+                <div class="row">
                  @foreach(Job::orderBy('updated_at', 'desc')->take(4)->get() as $job)
+                 <div class="col-md-4">
                     <a href='/jobs/show/{{$job->job_id}}' class="list-group-item d-flex justify-content-between align-items-center pb-0">
                       <h6 class="font-weight-bold" style="-webkit-box-shadow: 10px -5px 20px -4px rgb(0 0 0 / 75%); -moz-box-shadow: 10px -5px 20px -4px rgba(0,0,0,0.75); box-shadow: 10px -5px 20px -4px rgb(0 0 0 / 75%); padding: 20px;">
                           <small><label class="text-muted far fa-clock"> {{to_time_ago(strtotime($job->updated_at))}}</label></small><br>
@@ -172,8 +173,9 @@
                         </h6> 
                         <!-- <span><small><i class="fas fa-chevron-right"></i></small></span> -->
                     </a>
+                  </div>
                   @endforeach
-                </ul>
+                </div>
                 <div class="row mx-auto p-4">
                    <small><a class="text-center" href="/jobs">View all</a></small>
                 </div>
