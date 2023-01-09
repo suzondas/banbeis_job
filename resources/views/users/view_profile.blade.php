@@ -31,12 +31,12 @@
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">General Information</a>
                 <a class="nav-item nav-link" id="nav-education-tab" data-toggle="tab" href="#nav-education" role="tab" aria-controls="nav-education" aria-selected="false">Educational Qualifications</a>
-                <a class="nav-item nav-link" id="nav-experience-tab" data-toggle="tab" href="#nav-experience" role="tab" aria-controls="nav-experience" aria-selected="false">experience</a>
+                <a class="nav-item nav-link" id="nav-experience-tab" data-toggle="tab" href="#nav-experience" role="tab" aria-controls="nav-experience" aria-selected="false">Experience</a>
             </div>
         </nav>
       <div class="tab-content" id="nav-tabContent">
-<h2 class="text-center p-5 text-success">General Information</h2>
         <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <h2 class="text-center p-5 text-success">General Information</h2>
             
         <form class="form-horizontal" method="POST" action="save_general_info" enctype="multipart/form-data">
             <fieldset>
@@ -333,11 +333,14 @@
     </div>
 
     <div class="tab-pane fade" id="nav-education" role="tabpanel" aria-labelledby="nav-education-tab">
-
-        <hr class="p-2">
-                <h3>Educational Qualifications</h3>
+<br>
+                <h3 align="center">Educational Qualifications</h3>
                 <!-- Select Basic-- Result_table -->
                 <div class="container">
+                    <?php
+                    $sscHscResultArray = ["Not Application"=>0, "A+"=>5,"A"=>4,"A-"=>3.5,"B"=>3,"C"=>2,"D"=>1,
+                    "First_Division"=>5,"Second_Division"=>3,"Third_Division"=>1];
+                    ?>
                     <div class="row">
                         <table class="table table-bordered table-striped">
                             <tbody>
@@ -355,14 +358,11 @@
                                 <td>
                                     <select>
                                         <option>Select</option>
-                                        <option>A+</option>
-                                        <option>A</option>
-                                        <option>A-</option>
-                                        <option>B+</option>
-                                        <option>B</option>
-                                        <option>B-</option>
-                                        <option>C</option>
-                                        <option>D</option>
+                                        @foreach($sscHscResultArray as $key=>$val)
+                                        <option value="{{$key}}
+                                        @if($result->)
+                                        ">{{$val}}</option>
+                                        @endforeach
                                     </select>
                                 </td>
                                 <!--<td><input type="text" name="" class="form-control"></td>
@@ -466,6 +466,14 @@
                             </tr>
                             </tbody>
                         </table>
+                        <hr>
+                        <div class="container bg-light">
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-primary">Save & Next</button>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
                     </div>
                 </div>
     </div>
@@ -476,7 +484,8 @@
         <br>
         <h4>(A) BANBEIS Survey and Census</h4>
         <!-- Select Basic -->
-
+<form action="experiences" method="POST" enctype="multipart/form-data">
+    @csrf
         <table class="table table-bordered table-striped">
             <thead>
             <tr>
@@ -492,81 +501,152 @@
                     Survey
                 </td>
                 <td>
-                    <select id="english_medium" name="english_medium" class="form-control">
+                    <select id="english_medium" name="e_m_s_s" class="form-control">
                         <option>Select</option>
-                        <option value="1">Yes</option>
-                        <option value="2">No</option>
+                        <option value="1"
+                                    @if(isset($experiences))
+                                    @if($experiences->e_m_s_s=='1')
+                                    selected
+                                    @endif
+                                    @endif
+                        >Yes</option>
+                        <option value="2"
+                        @if(isset($experiences))
+                        @if($experiences->e_m_s_s=='2')
+                        selected
+                        @endif
+                        @endif
+                        >No</option>
                     </select>
                 </td>
-                <td><input type="number"/></td>
+                <td><input type="number" name="e_m_s_s_experience" value="{{isset($experiences)?$experiences->e_m_s_s_experience:''}}"/></td>
                 <td><input type="file"/></td>
             </tr>
             <tr>
                 <td>2. BANBEIS PEC Survey
                 </td>
                 <td>
-                    <select id="" name="" class="form-control">
+                    <select id="" name="b_p_s" class="form-control">
                         <option>Select</option>
-                        <option value="1">Yes</option>
-                        <option value="2">No</option>
+                        <option value="1" 
+                        @if(isset($experiences))
+                        @if($experiences->b_p_s=='1')
+                        selected
+                        @endif
+                        @endif
+                        >Yes</option>
+                        <option value="2"
+                        @if(isset($experiences))
+                        @if($experiences->b_p_s=='2')
+                        selected
+                        @endif
+                        @endif
+                        >No</option>
                     </select>
                 </td>
-                <td><input type="number"/></td>
+                <td><input type="number" name="b_p_s_experience" value="{{isset($experiences)?$experiences->b_p_s_experience:''}}"/></td>
                 <td><input type="file"/></td>
             </tr>
             <tr>
                 <td>3. Primary PEC Survey
                 </td>
                 <td>
-                    <select id="" name="" class="form-control">
+                    <select id="" name="p_p_s" class="form-control">
                         <option>Select</option>
-                        <option value="1">Yes</option>
-                        <option value="2">No</option>
+                        <option value="1"
+                        @if(isset($experiences))
+                        @if($experiences->p_p_s=='1')
+                        selected
+                        @endif
+                        @endif
+                        >Yes</option>
+                        <option value="2"
+                        @if(isset($experiences))
+                        @if($experiences->p_p_s=='2')
+                        selected
+                        @endif
+                        @endif
+                        >No</option>
                     </select>
                 </td>
-                <td><input type="number"/></td>
+                <td><input type="number" name="p_p_s_experience" value="{{isset($experiences)?$experiences->p_p_s_experience:''}}"/></td>
                 <td><input type="file"/></td>
             </tr>
             <tr>
                 <td>4. CSSR Survey
                 </td>
                 <td>
-                    <select id="" name="" class="form-control">
+                    <select id="" name="c_s" class="form-control">
                         <option>Select</option>
-                        <option value="1">Yes</option>
-                        <option value="2">No</option>
+                        <option value="1"
+                        @if(isset($experiences))
+                        @if($experiences->c_s=='1')
+                        selected
+                        @endif
+                        @endif
+                        >Yes</option>
+                        <option value="2"
+                        @if(isset($experiences))
+                        @if($experiences->c_s=='2')
+                        selected
+                        @endif
+                        @endif
+                        >No</option>
                     </select>
                 </td>
-                <td><input type="number"/></td>
+                <td><input type="number" name="c_s_experience"  value="{{isset($experiences)?$experiences->c_s_experience:''}}"/></td>
                 <td><input type="file"/></td>
             </tr>
             <tr>
                 <td>5. Teacher Attrition Survey
                 </td>
                 <td>
-                    <select id="" name="" class="form-control">
+                    <select id="" name="t_a_s" class="form-control">
                         <option>Select</option>
-                        <option value="1">Yes</option>
-                        <option value="2">No</option>
+                        <option value="1"
+                        @if(isset($experiences))
+                        @if($experiences->t_a_s=='1')
+                        selected
+                        @endif
+                        @endif
+                        >Yes</option>
+                        <option value="2"
+                        @if(isset($experiences))
+                        @if($experiences->t_a_s=='2')
+                        selected
+                        @endif
+                        @endif
+                        >No</option>
                     </select>
                 </td>
-                <td><input type="number"/></td>
+                <td><input type="number" name="t_a_s_experience" value="{{isset($experiences)?$experiences->t_a_s_experience:''}}"/></td>
                 <td><input type="file"/></td>
             </tr>
             <tr>
                 <td>6. TVET Survey
                 </td>
                 <td>
-                    <select id="" name="" class="form-control">
+                    <select id="" name="t_s" class="form-control">
                         <option>Select</option>
-                        <option value="1">Yes</option>
-                        <option value="2">No</option>
+                        <option value="1"
+                        @if(isset($experiences))
+                        @if($experiences->t_s=='1')
+                        selected
+                        @endif
+                        @endif
+                        >Yes</option>
+                        <option value="2"
+                        @if(isset($experiences))
+                        @if($experiences->t_s=='2')
+                        selected
+                        @endif
+                        @endif
+                        >No</option>
                     </select>
                 </td>
-                <td><input type="number"/></td>
+                <td><input type="number" name="t_s_experience" value="{{isset($experiences)?$experiences->t_s_experience:''}}"/></td>
                 <td><input type="file"/></td>
             </tr>
-
             </tbody>
         </table>
 
@@ -575,10 +655,18 @@
         <div class="form-group" >
             <label class="col-md-4 control-label" for="tvet_survey"> Description of Expericnce</label>
             <div class="col-md-8">
-                <textarea class="form-control"></textarea>
+                <textarea class="form-control" name="other_survey">{{isset($experiences)?$experiences->other_survey:''}}</textarea>
                 Upload Experience Certificate:<br><input type="file"/>
             </div>
         </div>
+        <hr>
+        <div class="container bg-light">
+            <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-primary">Save & Next</button>
+            </div>
+        </div>
+        <br>
+</form>
     </div>
 </div>
     </div>

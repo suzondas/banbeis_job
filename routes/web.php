@@ -85,3 +85,4 @@ Route::get('/employees/applicants/{job_id}', 'ApplicationController@show_applica
 Route::post('/users/save_general_info', 'General_infoController@store');
 
 
+Route::post('/users/experiences', 'ExperiencesController@store');
