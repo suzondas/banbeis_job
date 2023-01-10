@@ -16,7 +16,11 @@
 		<a style="color: blue; text-decoration: underline;" href='/employeers/dashboard'>Back</a>
 		<table class="table mt-5">
 			<thead>
-				<th>No</th><th>Job title</th><th>Posted</th><th>Applicant Name</th><th>Applied date</th><th>Action</th>
+				<th>No</th><th>Job title</th><th>Posted</th>
+				<th>Applicant Name</th>
+				<th>Applied date</th>
+				<th>Marks</th>
+				<th>Action</th>
 			</thead>
 			<tbody>
 				@foreach($applicants as $applicant)
@@ -28,6 +32,7 @@
 								<td>{{date('d-M-Y', strtotime($job->updated_at))}}</td>
 								<td>{{ $user->name }}</td>
 								<td>{{date('d-M-Y', strtotime($applicant->created_at))}}</td>
+								<td>{{ $applicant->total_marks }}</td>
 								<td>
 									<a href='/users/public_profile/{{$applicant->user_id}}' style="color: blue; text-decoration: underline;">View CV</a> | 
 									<a href='/users/public_profile/{{$applicant->user_id}}' style="color: blue; text-decoration: underline;">Delete</a>

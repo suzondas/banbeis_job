@@ -15,6 +15,7 @@ class CreateGeneralInfoTable extends Migration
     {
         Schema::create('general_info', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('user_id');
             $table->string('name');
             $table->string('fathers_name');
             $table->string('mothers_name');
