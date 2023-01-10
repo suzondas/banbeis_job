@@ -86,3 +86,4 @@ Route::post('/users/save_general_info', 'General_infoController@store');
 
 
 Route::post('/users/experiences', 'ExperiencesController@store');
+Route::post('/users/educations', 'EducationsController@store');

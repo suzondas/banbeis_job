@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Education;
+use App\Educations;
 use App\Experiences;
 use App\General_info;
 use App\User;
@@ -34,9 +35,10 @@ class HomeController extends Controller
     {
         $id = Auth::user()->id;
         $general_info = General_info::where('user_id', '=' , $id)->first();
+        $educations = Educations::where('user_id', '=' , $id)->first();
         $experiences = Experiences::where('user_id', '=' , $id)->first();
        
-        return view('users.view_profile', compact('general_info','experiences'));
+        return view('users.view_profile', compact('general_info','experiences','educations'));
     }
     public function edit_profile()
     {

@@ -325,7 +325,7 @@
             @csrf
             <div class="container bg-light">
                 <div class="col-md-12 text-center">
-                    <button type="submit" class="btn btn-primary">Save & Next</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
                 </div>
             </div>
             <br>
@@ -337,6 +337,7 @@
                 <h3 align="center">Educational Qualifications</h3>
                 <!-- Select Basic-- Result_table -->
                 <div class="container">
+                    <form action="educations" method="POST" enctype="multipart/form-data">
                     <?php
                     $sscHscResultArray = ["Not Application"=>0, "A+"=>5,"A"=>4,"A-"=>3.5,"B"=>3,"C"=>2,"D"=>1,
                     "First_Division"=>5,"Second_Division"=>3,"Third_Division"=>1];
@@ -356,12 +357,15 @@
                                 <td>S.S.C</td>
                                 {{--<td></td>--}}
                                 <td>
-                                    <select>
-                                        <option>Select</option>
+                                    <select name="ssc">
                                         @foreach($sscHscResultArray as $key=>$val)
-                                        <option value="{{$key}}
-                                        @if($result->)
-                                        ">{{$val}}</option>
+                                        <option value="{{$val}}"
+                                        @if(isset($educations))
+                                        @if($educations->ssc==$val)
+                                        selected
+                                        @endif
+                                        @endif
+                                        >{{$key}}</option>
                                         @endforeach
                                     </select>
                                 </td>
@@ -373,16 +377,16 @@
                                 <td>H.S.C</td>
                                 {{--<td></td>--}}
                                 <td>
-                                    <select>
-                                        <option>Select</option>
-                                        <option>A+</option>
-                                        <option>A</option>
-                                        <option>A-</option>
-                                        <option>B+</option>
-                                        <option>B</option>
-                                        <option>B-</option>
-                                        <option>C</option>
-                                        <option>D</option>
+                                    <select name="hsc">
+                                        @foreach($sscHscResultArray as $key=>$val)
+                                        <option value="{{$val}}"
+                                        @if(isset($educations))
+                                        @if($educations->hsc==$val)
+                                        selected
+                                        @endif
+                                        @endif
+                                        >{{$key}}</option>
+                                        @endforeach
                                     </select>
                                 </td>
                                 <!--<td><input type="text" name="" class="form-control"></td>
@@ -400,16 +404,16 @@
                                      </select>
                                  </td>--}}
                                 <td>
-                                    <select>
-                                        <option>Select</option>
-                                        <option>A+</option>
-                                        <option>A</option>
-                                        <option>A-</option>
-                                        <option>B+</option>
-                                        <option>B</option>
-                                        <option>B-</option>
-                                        <option>C</option>
-                                        <option>D</option>
+                                    <select name="degree">
+                                        @foreach($sscHscResultArray as $key=>$val)
+                                        <option value="{{$val}}"
+                                        @if(isset($educations))
+                                        @if($educations->degree==$val)
+                                        selected
+                                        @endif
+                                        @endif
+                                        >{{$key}}</option>
+                                        @endforeach
                                     </select>
                                 </td>
                                 <!--<td><input type="text" name="" class="form-control"></td>
@@ -428,16 +432,16 @@
                                     </select>
                                 </td>--}}
                                 <td>
-                                    <select>
-                                        <option>Select</option>
-                                        <option>A+</option>
-                                        <option>A</option>
-                                        <option>A-</option>
-                                        <option>B+</option>
-                                        <option>B</option>
-                                        <option>B-</option>
-                                        <option>C</option>
-                                        <option>D</option>
+                                    <select name="honors">
+                                        @foreach($sscHscResultArray as $key=>$val)
+                                        <option value="{{$val}}"
+                                        @if(isset($educations))
+                                        @if($educations->honors==$val)
+                                        selected
+                                        @endif
+                                        @endif
+                                        >{{$key}}</option>
+                                        @endforeach
                                     </select>
                                 </td>
                                 <!--<td><input type="text" name="" class="form-control"></td>
@@ -448,16 +452,16 @@
                                 <td>Masters</td>
                                 {{--<td></td>--}}
                                 <td>
-                                    <select>
-                                        <option>Select</option>
-                                        <option>A+</option>
-                                        <option>A</option>
-                                        <option>A-</option>
-                                        <option>B+</option>
-                                        <option>B</option>
-                                        <option>B-</option>
-                                        <option>C</option>
-                                        <option>D</option>
+                                    <select name="masters">
+                                        @foreach($sscHscResultArray as $key=>$val)
+                                        <option value="{{$val}}"
+                                        @if(isset($educations))
+                                        @if($educations->masters==$val)
+                                        selected
+                                        @endif
+                                        @endif
+                                        >{{$key}}</option>
+                                        @endforeach
                                     </select>
                                 </td>
                                 <!--<td><input type="text" name="" class="form-control"></td>
@@ -467,21 +471,23 @@
                             </tbody>
                         </table>
                         <hr>
+                        @csrf
                         <div class="container bg-light">
                             <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary">Save & Next</button>
+                                <button type="submit" class="btn btn-primary">Save </button>
                             </div>
                         </div>
                         <br>
                         <br>
                     </div>
+                    </form>
                 </div>
     </div>
     <div class="tab-pane fade" id="nav-experience" role="tabpanel" aria-labelledby="nav-experience-tab">
 
     <div class="">
-        <h3 align="center"> Experience</h3>
         <br>
+        <h3 align="center"> Experience</h3>
         <h4>(A) BANBEIS Survey and Census</h4>
         <!-- Select Basic -->
 <form action="experiences" method="POST" enctype="multipart/form-data">
@@ -502,21 +508,20 @@
                 </td>
                 <td>
                     <select id="english_medium" name="e_m_s_s" class="form-control">
-                        <option>Select</option>
                         <option value="1"
                                     @if(isset($experiences))
                                     @if($experiences->e_m_s_s=='1')
                                     selected
                                     @endif
                                     @endif
-                        >Yes</option>
+                        >Not Experienced</option>
                         <option value="2"
                         @if(isset($experiences))
                         @if($experiences->e_m_s_s=='2')
                         selected
                         @endif
                         @endif
-                        >No</option>
+                        >Experienced</option>
                     </select>
                 </td>
                 <td><input type="number" name="e_m_s_s_experience" value="{{isset($experiences)?$experiences->e_m_s_s_experience:''}}"/></td>
@@ -527,21 +532,21 @@
                 </td>
                 <td>
                     <select id="" name="b_p_s" class="form-control">
-                        <option>Select</option>
+                        
                         <option value="1" 
                         @if(isset($experiences))
                         @if($experiences->b_p_s=='1')
                         selected
                         @endif
                         @endif
-                        >Yes</option>
+                        >Not Experienced</option>
                         <option value="2"
                         @if(isset($experiences))
                         @if($experiences->b_p_s=='2')
                         selected
                         @endif
                         @endif
-                        >No</option>
+                        > Experienced</option>
                     </select>
                 </td>
                 <td><input type="number" name="b_p_s_experience" value="{{isset($experiences)?$experiences->b_p_s_experience:''}}"/></td>
@@ -552,21 +557,21 @@
                 </td>
                 <td>
                     <select id="" name="p_p_s" class="form-control">
-                        <option>Select</option>
+                        
                         <option value="1"
                         @if(isset($experiences))
                         @if($experiences->p_p_s=='1')
                         selected
                         @endif
                         @endif
-                        >Yes</option>
+                        >Not Experienced</option>
                         <option value="2"
                         @if(isset($experiences))
                         @if($experiences->p_p_s=='2')
                         selected
                         @endif
                         @endif
-                        >No</option>
+                        > Experienced</option>
                     </select>
                 </td>
                 <td><input type="number" name="p_p_s_experience" value="{{isset($experiences)?$experiences->p_p_s_experience:''}}"/></td>
@@ -577,21 +582,21 @@
                 </td>
                 <td>
                     <select id="" name="c_s" class="form-control">
-                        <option>Select</option>
+                        
                         <option value="1"
                         @if(isset($experiences))
                         @if($experiences->c_s=='1')
                         selected
                         @endif
                         @endif
-                        >Yes</option>
+                        >Not Experienced</option>
                         <option value="2"
                         @if(isset($experiences))
                         @if($experiences->c_s=='2')
                         selected
                         @endif
                         @endif
-                        >No</option>
+                        > Experienced</option>
                     </select>
                 </td>
                 <td><input type="number" name="c_s_experience"  value="{{isset($experiences)?$experiences->c_s_experience:''}}"/></td>
@@ -602,21 +607,21 @@
                 </td>
                 <td>
                     <select id="" name="t_a_s" class="form-control">
-                        <option>Select</option>
+                       
                         <option value="1"
                         @if(isset($experiences))
                         @if($experiences->t_a_s=='1')
                         selected
                         @endif
                         @endif
-                        >Yes</option>
+                        >Not Experienced</option>
                         <option value="2"
                         @if(isset($experiences))
                         @if($experiences->t_a_s=='2')
                         selected
                         @endif
                         @endif
-                        >No</option>
+                        > Experienced</option>
                     </select>
                 </td>
                 <td><input type="number" name="t_a_s_experience" value="{{isset($experiences)?$experiences->t_a_s_experience:''}}"/></td>
@@ -627,21 +632,21 @@
                 </td>
                 <td>
                     <select id="" name="t_s" class="form-control">
-                        <option>Select</option>
+                      
                         <option value="1"
                         @if(isset($experiences))
                         @if($experiences->t_s=='1')
                         selected
                         @endif
                         @endif
-                        >Yes</option>
+                        >Not Experienced</option>
                         <option value="2"
                         @if(isset($experiences))
                         @if($experiences->t_s=='2')
                         selected
                         @endif
                         @endif
-                        >No</option>
+                        > Experienced</option>
                     </select>
                 </td>
                 <td><input type="number" name="t_s_experience" value="{{isset($experiences)?$experiences->t_s_experience:''}}"/></td>
@@ -662,7 +667,7 @@
         <hr>
         <div class="container bg-light">
             <div class="col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Save & Next</button>
+                <button type="submit" class="btn btn-primary">Save </button>
             </div>
         </div>
         <br>
