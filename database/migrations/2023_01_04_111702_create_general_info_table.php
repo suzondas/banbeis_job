@@ -46,6 +46,8 @@ class CreateGeneralInfoTable extends Migration
             $table->enum('is_pa_ma',['1','2'])->default('1');
 
             $table->string('student_id_path');
+            $table->string('nid_path');
+            $table->string('birth_reg_num_path');
 
             $table->timestamps();
         });
