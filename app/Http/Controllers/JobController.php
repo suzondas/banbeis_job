@@ -146,7 +146,7 @@ class JobController extends Controller
             Category::where('category_name', '=' , $request->category_name)->increment('no_jobs', 1);
         }
 
-        $job->employeer_id = Auth::user('employeer')->id;
+        $job->employeer_id = Auth::guard('employeer')->id();
         $job->category = $request->category_name;
         $job->job_context = $request->job_context;
         $job->keywords = $request->keywords;

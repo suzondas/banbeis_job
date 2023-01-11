@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card" style="border:;">
-                <div class="card-header bg-white"> <h4>{{ isset($url) ? ucwords($url) : ""}} {{ __('Login') }}</h4></div>
+                <div class="card-header bg-white"> <h4> {{ __('Login') }}</h4></div>
 
                     <div class="card-body">
                         @isset($url)
@@ -69,11 +69,11 @@
                             </div>
                         </div>
                     <div class="m-2 text-center pt-4">
-                        <label>Not a member yet?</label> 
+                        
                         @isset($url)
-                            <a href='{{ url("register/$url") }}' style="text-decoration: underline; color: blue;">JOIN NOW</a> as an Employeer
+                            {{-- <a href='{{ url("register/$url") }}' style="text-decoration: underline; color: blue;">JOIN NOW</a> as an BANBEIS --}}
                         @else
-                            <a href='/register' style="text-decoration: underline; color: blue;">JOIN NOW </a>as a Job Seeker
+                            <a href='/register' style="text-decoration: underline; color: blue;">Register</a>   as a Applicant
                         @endisset
                     </div>
                     </form>

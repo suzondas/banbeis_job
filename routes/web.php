@@ -64,7 +64,7 @@ Route::get('/users/education/delete/{edu_id}', 'EducationController@destroy');
 
 
 ///New Multiauth
-Route::get('/login/employeer', 'Auth\LoginController@showEmployeerLoginForm');
+Route::get('/login/employeer', 'Auth\LoginController@showEmployeerLoginForm')->name('login/employeer');
 Route::get('/login/user', 'Auth\LoginController@showUserLoginForm');
 Route::get('/register/employeer', 'Auth\RegisterController@showEmployeerRegisterForm');
 Route::get('/register/user', 'Auth\RegisterController@showUserRegisterForm');
@@ -87,3 +87,4 @@ Route::post('/users/save_general_info', 'General_infoController@store');
 
 Route::post('/users/experiences', 'ExperiencesController@store');
 Route::post('/users/educations', 'EducationsController@store');
+Route::post('/users/public_profile_marks', 'EducationsController@store');

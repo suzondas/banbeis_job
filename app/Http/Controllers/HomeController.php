@@ -46,8 +46,11 @@ class HomeController extends Controller
     }
     public function public_profile($user_id)
     {
-        $user = User::Find($user_id);
-        $education = Education::orderBy('passing_year','desc')->where('user_id', '=' , $user_id)->get();
-        return view('users.public_profile', compact('user', 'education'));
+        $id = $user_id;
+        $general_info = General_info::where('user_id', '=' , $id)->first();
+        $educations = Educations::where('user_id', '=' , $id)->first();
+        $experiences = Experiences::where('user_id', '=' , $id)->first();
+       
+        return view('users.view_user_from_admin', compact('general_info','experiences','educations'));
     }
 }

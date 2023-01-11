@@ -118,7 +118,7 @@ use App\Employeer;
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        Job Seeker: {{ Auth::guard('web')->user()->name }} <span class="caret"></span>
+                        Applicant: {{ Auth::guard('web')->user()->name }} <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a href="{{route('home')}}" class="dropdown-item">Dashboard</a>
@@ -162,12 +162,12 @@ use App\Employeer;
             @else
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('login') }}">
-                        <button class="btn btn-secondary"> Job Seeker Login</button>
+                        <button class="btn btn-secondary"> Applicant Login</button>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login/employeer">
-                        <button class="btn btn-secondary">BANBEIS Login</button>
+                    <a class="nav-link" href="{{ route('login/employeer') }}">
+                        <button class="btn btn-secondary">Admin Login</button>
                     </a>
                 </li>
             @endif

@@ -13,13 +13,14 @@
 			$i = 1
 		@endphp
 		<h6 class="text-center">Applicants Information</h6>
-		<a style="color: blue; text-decoration: underline;" href='/employeers/dashboard'>Back</a>
-		<table class="table mt-5">
+		<h6 class="text-center">Post: {{Job::where('job_id', '=', $applicants[0]->job_id)->first()->title}}</h6>
+		<a style="color: blue; text-decoration: underline;" href='/employeers/dashboard'>< Back</a>
+		<table class="table table-bordered  mt-5">
 			<thead>
-				<th>No</th><th>Job title</th><th>Posted</th>
-				<th>Applicant Name</th>
-				<th>Applied date</th>
-				<th>Marks</th>
+				<th>#</th><th>Applicant Name</th><th>Age Marks</th>
+				<th>Education Marks</th>
+				<th>Experience Marks</th>
+				<th>Total Marks</th>
 				<th>Action</th>
 			</thead>
 			<tbody>
@@ -28,14 +29,31 @@
 						@foreach(User::where('id', '=', $applicant->user_id)->get() as $user)
 							<tr>
 								<td>{{ $i++ }}</td>
-								<td>{{ $job->title }}</td>
-								<td>{{date('d-M-Y', strtotime($job->updated_at))}}</td>
 								<td>{{ $user->name }}</td>
-								<td>{{date('d-M-Y', strtotime($applicant->created_at))}}</td>
-								<td>{{ $applicant->total_marks }}</td>
+								<td>Age: {{$applicant->calculated_marks['age']}}<br>
+								<b>Mark: {{$applicant->calculated_marks['age_marks']}}</b></td>
 								<td>
-									<a href='/users/public_profile/{{$applicant->user_id}}' style="color: blue; text-decoration: underline;">View CV</a> | 
-									<a href='/users/public_profile/{{$applicant->user_id}}' style="color: blue; text-decoration: underline;">Delete</a>
+									SSC: {{$applicant->calculated_marks['ssc']}}<br>
+									HSC: {{$applicant->calculated_marks['hsc']}}<br>
+									Degree: {{$applicant->calculated_marks['degree']}}<br>
+									Honors: {{$applicant->calculated_marks['honors']}}<br>
+									Masters: {{$applicant->calculated_marks['masters']}}<br>
+								<b>Total: {{$applicant->calculated_marks['education_marks']}}</b>
+								</td>
+								<td>
+									English Medium School Survey: {{$applicant->calculated_marks['exp_e_m_s_s']}}<br>
+									BANBEIS PEC Survey: {{$applicant->calculated_marks['exp_b_p_s']}}<br>
+									Primary PEC Survey: {{$applicant->calculated_marks['exp_p_p_s']}}<br>
+									CSSR Survey: {{$applicant->calculated_marks['exp_c_s']}}<br>
+									Teacher Attrition Survey: {{$applicant->calculated_marks['exp_t_a_s']}}<br>
+									TVET Survey: {{$applicant->calculated_marks['exp_t_s']}}<br>
+									<b>Total: {{$applicant->calculated_marks['exp_marks']}}</b>
+								</td>
+								<td><b>{{ $applicant->total_marks }}</b></td>
+								<td>
+									<a href='/users/public_profile/{{$applicant->user_id}}' style="color: blue; text-decoration: underline;">View CV</a> 
+									{{-- |  --}}
+									{{-- <a href='/users/public_profile_marks/{{$applicant->user_id}}' style="color: blue; text-decoration: underline;">View Marks</a> --}}
 								</td>
 							</tr>
 						@endforeach

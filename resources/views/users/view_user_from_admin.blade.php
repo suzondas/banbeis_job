@@ -13,81 +13,6 @@
         .navbar {
             background: skyblue !important;
         }
-        .stepper-wrapper {
-  margin-top: auto;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-.stepper-item {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1;
-
-  @media (max-width: 768px) {
-    font-size: 12px;
-  }
-}
-
-.stepper-item::before {
-  position: absolute;
-  content: "";
-  border-bottom: 2px solid #ccc;
-  width: 100%;
-  top: 20px;
-  left: -50%;
-  z-index: 2;
-}
-
-.stepper-item::after {
-  position: absolute;
-  content: "";
-  border-bottom: 2px solid #ccc;
-  width: 100%;
-  top: 20px;
-  left: 50%;
-  z-index: 2;
-}
-
-.stepper-item .step-counter {
-  position: relative;
-  z-index: 5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: #ccc;
-  margin-bottom: 6px;
-}
-
-.stepper-item.active {
-  font-weight: bold;
-}
-
-.stepper-item.completed .step-counter {
-  background-color: #4bb543;
-}
-
-.stepper-item.completed::after {
-  position: absolute;
-  content: "";
-  border-bottom: 2px solid #4bb543;
-  width: 100%;
-  top: 20px;
-  left: 50%;
-  z-index: 3;
-}
-
-.stepper-item:first-child::before {
-  content: none;
-}
-.stepper-item:last-child::after {
-  content: none;
-}
     </style>
     
 </head>
@@ -96,23 +21,13 @@
     @if(session()->get('errors'))
     toastr.error("{{ session()->get('errors')->first() }}");
 @endif
+
     <div class="container-fluid text-center" style="margin: 0; margin-top: 8%">
-        <h2 class="text-center pt-2">Your Profile</h2>
+<a  style="color: blue; text-decoration: underline;" href="{{ url()->previous()}}">< Back</a>
+
+        <h2 class="text-center pt-2">Profile of {{isset($general_info)?$general_info->name:''}}</h2>
     </div>
-    <div class="stepper-wrapper">
-        <div class="stepper-item {{isset($general_info)?'completed':''}}">
-          <div class="step-counter">1</div>
-          <div class="step-name">General Information</div>
-        </div>
-        <div class="stepper-item {{isset($educations)?'completed':''}}">
-          <div class="step-counter">2</div>
-          <div class="step-name">Educational Information</div>
-        </div>
-        <div class="stepper-item {{isset($experiences)?'completed':''}}">
-          <div class="step-counter">3</div>
-          <div class="step-name">Experiences</div>
-        </div>
-      </div>
+
     <div class="container pt-5"
          style="-webkit-box-shadow: 10px 10px 33px 0px rgba(0,0,0,0.75); -moz-box-shadow: 10px 10px 33px 0px rgba(0,0,0,0.75); box-shadow: 10px 10px 33px 0px rgba(0,0,0,0.75);">
         <nav class="mt-2">
@@ -231,8 +146,7 @@
                                        <a class="btn btn-success" target="_blank" href="/profile_photos/{{$general_info->nid_path}}">View File</a><br>
                                        @endif
                                        @endif
-                                       Upload NID:<br>
-                                       <input type="file" name="nid_path"/>
+                                      
 
                             </div>
                             <br>
@@ -256,9 +170,7 @@
                             <a class="btn btn-success" target="_blank" href="/profile_photos/{{$general_info->birth_reg_num_path}}">View File</a><br>
                             @endif
                             @endif
-                            Upload Birth Registration Certificate:<br>
-                                       
-                            <input type="file" name="birth_reg_num_path"/>
+                           
 
                             </div>
                         </div>
@@ -435,19 +347,13 @@
                             <a class="btn btn-success" target="_blank" href="/profile_photos/{{$general_info->student_id_path}}">View File</a><br>
                             @endif
                             @endif
-                            Upload ID Card:<br><input class="" type="file" name="student_file"/>
-                        </div>
+                            </div>
                     </div>
                 </div>
             </fieldset>
 
             <hr>
-            @csrf
-            <div class="container bg-light">
-                <div class="col-md-12 text-center">
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </div>
-            </div>
+            
             <br>
         </form>
     </div>
@@ -471,7 +377,7 @@
                                 <td>Result(Grade/Class)</td>
                                 <!--<td>GPA/Marks</td>
                                 <td>Passing Year</td>-->
-                                <td>Upload File(.pdf format)</td>
+                                
                             </tr>
                             <tr>
                                 <td>S.S.C/Equivalent</td>
@@ -491,7 +397,7 @@
                                 </td>
                                 <!--<td><input type="text" name="" class="form-control"></td>
                                 <td><input type="text" name="" class="form-control"></td>-->
-                                <td>Upload Certificate: <input type="file"/></td>
+                                
                             </tr>
                             <tr>
                                 <td>H.S.C/Equivalent</td>
@@ -511,7 +417,7 @@
                                 </td>
                                 <!--<td><input type="text" name="" class="form-control"></td>
                                 <td><input type="text" name="" class="form-control"></td>-->
-                                <td>Upload Certificate: <input type="file"/></td>
+                                
                             </tr>
                             <tr>
                                 <td>Degree(pass)</td>
@@ -538,7 +444,7 @@
                                 </td>
                                 <!--<td><input type="text" name="" class="form-control"></td>
                                 <td><input type="text" name="" class="form-control"></td>-->
-                                <td>Upload Certificate: <input type="file"/></td>
+                                
                             </tr>
                             <tr>
                                 <td>Degree(Honor's)</td>
@@ -566,7 +472,7 @@
                                 </td>
                                 <!--<td><input type="text" name="" class="form-control"></td>
                                 <td><input type="text" name="" class="form-control"></td>-->
-                                <td>Upload Certificate: <input type="file"/></td>
+                                
                             </tr>
                             <tr>
                                 <td>Masters</td>
@@ -586,17 +492,12 @@
                                 </td>
                                 <!--<td><input type="text" name="" class="form-control"></td>
                                 <td><input type="text" name="" class="form-control"></td>-->
-                                <td>Upload Certificate: <input type="file"/></td>
+                                
                             </tr>
                             </tbody>
                         </table>
                         <hr>
-                        @csrf
-                        <div class="container bg-light">
-                            <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary">Save </button>
-                            </div>
-                        </div>
+                        
                         <br>
                         <br>
                     </div>
@@ -618,7 +519,6 @@
                 <th>Name of Experience</th>
                 <th>Status</th>
                 <th>Year of Experience</th>
-                <th>Upload Certificate</th>
             </tr>
             </thead>
             <tbody>
@@ -645,7 +545,7 @@
                     </select>
                 </td>
                 <td><input type="number" name="e_m_s_s_experience" value="{{isset($experiences)?$experiences->e_m_s_s_experience:''}}"/></td>
-                <td><input type="file"/></td>
+                
             </tr>
             <tr>
                 <td>2. BANBEIS PEC Survey
@@ -670,7 +570,7 @@
                     </select>
                 </td>
                 <td><input type="number" name="b_p_s_experience" value="{{isset($experiences)?$experiences->b_p_s_experience:''}}"/></td>
-                <td><input type="file"/></td>
+              
             </tr>
             <tr>
                 <td>3. Primary PEC Survey
@@ -695,7 +595,7 @@
                     </select>
                 </td>
                 <td><input type="number" name="p_p_s_experience" value="{{isset($experiences)?$experiences->p_p_s_experience:''}}"/></td>
-                <td><input type="file"/></td>
+               
             </tr>
             <tr>
                 <td>4. CSSR Survey
@@ -720,7 +620,7 @@
                     </select>
                 </td>
                 <td><input type="number" name="c_s_experience"  value="{{isset($experiences)?$experiences->c_s_experience:''}}"/></td>
-                <td><input type="file"/></td>
+             
             </tr>
             <tr>
                 <td>5. Teacher Attrition Survey
@@ -745,7 +645,7 @@
                     </select>
                 </td>
                 <td><input type="number" name="t_a_s_experience" value="{{isset($experiences)?$experiences->t_a_s_experience:''}}"/></td>
-                <td><input type="file"/></td>
+             
             </tr>
             <tr>
                 <td>6. TVET Survey
@@ -770,7 +670,7 @@
                     </select>
                 </td>
                 <td><input type="number" name="t_s_experience" value="{{isset($experiences)?$experiences->t_s_experience:''}}"/></td>
-                <td><input type="file"/></td>
+               
             </tr>
             </tbody>
         </table>
@@ -781,15 +681,11 @@
             <label class="col-md-4 control-label" for="tvet_survey"> Description of Expericnce</label>
             <div class="col-md-8">
                 <textarea class="form-control" name="other_survey">{{isset($experiences)?$experiences->other_survey:''}}</textarea>
-                Upload Experience Certificate:<br><input type="file"/>
+                
             </div>
         </div>
         <hr>
-        <div class="container bg-light">
-            <div class="col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Save </button>
-            </div>
-        </div>
+        
         <br>
 </form>
     </div>
@@ -798,6 +694,7 @@
 </div>
 </div>
 <script type="text/javascript">
+ $('#app :input').prop('disabled', true);
 
     new Vue({
         el: '#app',
