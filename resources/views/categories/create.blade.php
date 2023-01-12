@@ -17,7 +17,7 @@
 		<div class="container-fluid p-5 " style="margin-top: 5%">
 			<h4 class="pb-2 pl-2" style="text-align: center;">Add New Category</h4>
 			<a class='m-2' href='/categories' style="color: blue; text-decoration: underline;"> View all</a>
-			<form action="/categories/store" method="post" class="card p-4 m-2 p-4 mb-5" style='background-color: rgb(253, 253, 253); border:none; border-radius: 1% '>
+			<form action="categories/store" method="post" class="card p-4 m-2 p-4 mb-5" style='background-color: rgb(253, 253, 253); border:none; border-radius: 1% '>
 			  @csrf
 			  <div class="form-row">
 			    <div class="form-group col-md-6">
@@ -34,7 +34,7 @@
 			    </div>
 			    <div class="form-group col-md-2">
 			      <label for="exampleFormControlInput1">&nbsp;</label>
-			      <a href="/categories" class=" form-control btn btn-light font-weight-bold">Cancel</a>
+			      <a href="categories" class=" form-control btn btn-light font-weight-bold">Cancel</a>
 			    </div>
 			  </div>
 			</form>

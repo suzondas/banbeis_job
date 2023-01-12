@@ -118,7 +118,7 @@
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 @foreach(Category::all() as $category)
-                  <a class="dropdown-item" href="/jobs?category={{$category->category_name}}"><option value="{{$category->category_name}}">{{$category->category_name}} ({{$category->no_jobs}})</option></a>
+                  <a class="dropdown-item" href="jobs?category={{$category->category_name}}"><option value="{{$category->category_name}}">{{$category->category_name}} ({{$category->no_jobs}})</option></a>
                 @endforeach
              </div>
             </div>
@@ -172,7 +172,7 @@
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 @foreach($jobs as $job)
                   @foreach(Employeer::where('id', '=', $job->employeer_id)->get() as $company)
-                    <a class="dropdown-item" href="/jobs?company={{$company->id}}">
+                    <a class="dropdown-item" href="jobs?company={{$company->id}}">
                       <option value="{{$company->name}}">{{$company->name}}</option>
                     </a>
                   @endforeach
@@ -212,7 +212,7 @@
                 <h6>No jobs found</h6>
               @else
               @foreach($jobs as $job)
-                <a href="/jobs/show/{{$job->job_id}}">
+                <a href="jobs/show/{{$job->job_id}}">
                   <div class="card mb-3" id="job_post" style="width: 100%; list-style: none">
                     <div class="card-body">
                       <h5 class="card-title" id="job_title" style="color: #0052cc"><b>{{$job->title}}</b></h5>

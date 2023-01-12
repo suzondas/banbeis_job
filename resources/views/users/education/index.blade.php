@@ -11,7 +11,7 @@
 			<a href="/users/education/create" class="btn btn-primary btn-sm m-2" role="button" aria-pressed="true">
 				<b>+ New Degree</b>
 			</a>
-			<a href="/users/view_profile" class="btn btn-light btn-sm m-2" role="button" aria-pressed="true">
+			<a href="users/view_profile" class="btn btn-light btn-sm m-2" role="button" aria-pressed="true">
 				View Profile
 			</a>
 			@foreach($education as $user_education)
@@ -27,8 +27,8 @@
                           <b>Result: </b> {{$user_education->result}} 
                       </li>
                       <small id="job_post_link">
-                        <a href="/users/education/edit/{{$user_education->id}}" style="text-decoration: ; color: #0052cc">Edit</a> <i style="color:#b3b3b3">&#8226; </i>
-                        <a href="/users/education/delete/{{$user_education->id}}" style="text-decoration: ; color: #0052cc">Remove</a>
+                        <a href="users/education/edit/{{$user_education->id}}" style="text-decoration: ; color: #0052cc">Edit</a> <i style="color:#b3b3b3">&#8226; </i>
+                        <a href="users/education/delete/{{$user_education->id}}" style="text-decoration: ; color: #0052cc">Remove</a>
                       </small>
                     </div>
                 </div>

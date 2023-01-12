@@ -37,13 +37,13 @@
 										<td>{{date('d-M-Y', strtotime($job->deadline))}}</td>
 										<td>
 											{{Application::where('job_id', '=', $job->job_id)->count()}}
-											<a href='/employees/applicants/{{$job->job_id}}' style="text-decoration: underline; color: blue;">
+											<a href="{{url('/employees/applicants/'.$job->job_id)}}" style="text-decoration: underline; color: blue;">
 												 (View all)
 											</a>
 										</td>
 										<td>
-											<a href='/jobs/edit/{{$job->job_id}}' style="color: blue; text-decoration: underline;">Edit</a> | 
-											<a href='/jobs/delete/{{$job->job_id}}' style="color: blue; text-decoration: underline;">Delete</a>
+											<a href="{{url('/jobs/edit/'.$job->job_id)}}" style="color: blue; text-decoration: underline;">Edit</a> | 
+											<a href="{{url('/jobs/delete/'.$job->job_id)}}" style="color: blue; text-decoration: underline;">Delete</a>
 										</td>
 									</tr>
 							@endforeach

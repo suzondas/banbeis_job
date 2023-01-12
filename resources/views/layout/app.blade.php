@@ -100,7 +100,7 @@ use App\Employeer;
 <body>
 <nav class="navbar fixed-top navbar-expand-lg p-2 bg-white"
      style="border-bottom: solid 0px #d9d9d9"><img src="{{asset('brand_logo.png')}}" height="50px" width="50px"/>
-    <a class="navbar-brand pl-4" href="/" style="color: rgb(25, 25, 25);">
+    <a class="navbar-brand pl-4" href="{{url('/')}}" style="color: rgb(25, 25, 25);">
         BANBEIS
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -110,7 +110,7 @@ use App\Employeer;
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="/jobs">Find Jobs<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{url('/jobs')}}">Find Jobs<span class="sr-only">(current)</span></a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
@@ -122,7 +122,7 @@ use App\Employeer;
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a href="{{route('home')}}" class="dropdown-item">Dashboard</a>
-                        <a class="dropdown-item" href="/users/view_profile">
+                        <a class="dropdown-item" href="{{url('users/view_profile')}}">
                             {{ __('Profile') }}
                         </a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
@@ -139,7 +139,7 @@ use App\Employeer;
 
             @elseif(Auth::guard('employeer')->check())
                 <li class="nav-item">
-                    <a class="nav-link" href="/jobs/create">Post Job</a>
+                    <a class="nav-link" href="{{url('/jobs/create')}}">Post Job</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a id="adminDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
@@ -147,7 +147,7 @@ use App\Employeer;
                         Employeer: {{ Auth::guard('employeer')->user()->name }}<span class="caret"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="adminDropdown">
-                        <a href="/employeers/dashboard" class="dropdown-item">Dashboard</a>
+                        <a href="{{url('/employeers/dashboard')}}" class="dropdown-item">Dashboard</a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">

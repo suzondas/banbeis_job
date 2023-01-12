@@ -15,7 +15,7 @@
 	<body>
 		<div class="container-fluid p-5 " style="margin-top: 5%">
 			<h3 style="text-align: center;">Edit Job Information</h3>
-			<form action="/jobs/update/{{$job->job_id}}" method="post" class="card p-4 m-2 p-4 mb-5 bg-white" style='border:none; box-shadow: ;background-color: rgb(253, 253, 253);'>
+			<form action="{{url('jobs/update/'.$job->job_id)}}" method="post" class="card p-4 m-2 p-4 mb-5 bg-white" style='border:none; box-shadow: ;background-color: rgb(253, 253, 253);'>
 			  @csrf
 			  <div class="form-row">
 			    <div class="form-group col-md-6">

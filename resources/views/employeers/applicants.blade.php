@@ -51,7 +51,7 @@
 								</td>
 								<td><b>{{ $applicant->total_marks }}</b></td>
 								<td>
-									<a href='/users/public_profile/{{$applicant->user_id}}' style="color: blue; text-decoration: underline;">View CV</a> 
+									<a href="{{url('/users/public_profile/'.$applicant->user_id)}}" style="color: blue; text-decoration: underline;">View CV</a> 
 									{{-- |  --}}
 									{{-- <a href='/users/public_profile_marks/{{$applicant->user_id}}' style="color: blue; text-decoration: underline;">View Marks</a> --}}
 								</td>

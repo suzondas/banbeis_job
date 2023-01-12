@@ -9,7 +9,7 @@
 		<div class="container p-5 mx-auto" style="margin-top: 5%; width:70%">
 			<h4 class="pb-2 pl-2 mb-2" style="text-align: center;">Personal Information</h4>
 			<label class='m-2 text-center'>Profile of <b>{{Auth::user()->name}}</b></label><br>
-			<a href="/users/view_profile" class="btn btn-light btn-sm m-2" role="button" aria-pressed="true">
+			<a href="users/view_profile" class="btn btn-light btn-sm m-2" role="button" aria-pressed="true">
 				View Profile
 			</a>
 			@if ($personalinfo->count() == 0)

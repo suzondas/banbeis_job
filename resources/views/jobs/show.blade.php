@@ -128,7 +128,7 @@
                             @endif
                         @endforeach
                         @if ($applied == 0)
-                            <a href="/apply/{{$job->job_id}}">
+                            <a href="{{url('/apply/'.$job->job_id)}}">
                                 <button type="button" class="btn btn-primary btn btn-block mb-2"><b>Apply this job</b>
                                 </button>
                             </a>

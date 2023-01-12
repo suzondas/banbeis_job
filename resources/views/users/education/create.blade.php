@@ -18,7 +18,7 @@
 			<h4 class="pb-2 pl-2" style="text-align: center;">Add New Educational Degree</h4>
 			<a class='m-2' href='/users/education' style="color: blue; text-decoration: underline;"> View all</a>
 			<br><label class='m-2'>Profile of <b>{{Auth::user()->name}}</b></label>
-			<form action="/users/education/store" method="post" class="card p-4 m-2 p-4 mb-5" style='background-color: rgb(253, 253, 253); border:none; border-radius: 1% '>
+			<form action="users/education/store" method="post" class="card p-4 m-2 p-4 mb-5" style='background-color: rgb(253, 253, 253); border:none; border-radius: 1% '>
 			  @csrf
 			  <div class="form-row">
 			    <div class="form-group col-md-4">

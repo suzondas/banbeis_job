@@ -73,7 +73,7 @@
                         @isset($url)
                             {{-- <a href='{{ url("register/$url") }}' style="text-decoration: underline; color: blue;">JOIN NOW</a> as an BANBEIS --}}
                         @else
-                            <a href='/register' style="text-decoration: underline; color: blue;">Register</a>   as a Applicant
+                            <a href="{{url('/register')}}" style="text-decoration: underline; color: blue;">Register</a>   as a Applicant
                         @endisset
                     </div>
                     </form>

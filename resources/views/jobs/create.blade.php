@@ -14,7 +14,7 @@
 		<div class="container-fluid p-5 " style="margin-top: 5%">
 			<h4 class="pb-2 pl-2" style="text-align: center;">Post a Job</h4>
 			<label class="pl-2 font-weight-normal">* Fill all the fields</label>
-			<form action="/jobs/store" method="post" class="card p-4 m-2 p-4 mb-5" style='background-color: rgb(253, 253, 253); border:none; border-radius: 1% '>
+			<form action="{{url('/jobs/store')}}" method="post" class="card p-4 m-2 p-4 mb-5" style='background-color: rgb(253, 253, 253); border:none; border-radius: 1% '>
 			  @csrf
 			  <div class="form-row">
 			    <div class="form-group col-md-6">
