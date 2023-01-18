@@ -8,11 +8,9 @@ use App\Employeer;
 <html>
 <head>
 
-    <link rel="icon"
-          href="https://www.pinclipart.com/picdir/big/198-1980971_sixdays-bremen-transparent-loading-circle-gif-clipart.png"
-          type="image/icon type">
+    
 
-    <title>Opportinity</title>
+    <title>BANBEIS JOB</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 

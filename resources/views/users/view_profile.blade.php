@@ -108,10 +108,7 @@
           <div class="step-counter">2</div>
           <div class="step-name">Educational Information</div>
         </div>
-        <div class="stepper-item {{isset($experiences)?'completed':''}}">
-          <div class="step-counter">3</div>
-          <div class="step-name">Experiences</div>
-        </div>
+        
       </div>
     <div class="container pt-5"
          style="-webkit-box-shadow: 10px 10px 33px 0px rgba(0,0,0,0.75); -moz-box-shadow: 10px 10px 33px 0px rgba(0,0,0,0.75); box-shadow: 10px 10px 33px 0px rgba(0,0,0,0.75);">
@@ -119,7 +116,6 @@
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">General Information</a>
                 <a class="nav-item nav-link" id="nav-education-tab" data-toggle="tab" href="#nav-education" role="tab" aria-controls="nav-education" aria-selected="false">Educational Qualifications</a>
-                <a class="nav-item nav-link" id="nav-experience-tab" data-toggle="tab" href="#nav-experience" role="tab" aria-controls="nav-experience" aria-selected="false">Experience</a>
             </div>
         </nav>
       <div class="tab-content" id="nav-tabContent">
@@ -603,197 +599,7 @@
                     </form>
                 </div>
     </div>
-    <div class="tab-pane fade" id="nav-experience" role="tabpanel" aria-labelledby="nav-experience-tab">
-
-    <div class="">
-        <br>
-        <h3 align="center" class="text-success"> Experience</h3>
-        <h4>(A) BANBEIS Survey and Census</h4>
-        <!-- Select Basic -->
-<form action="experiences" method="POST" enctype="multipart/form-data">
-    @csrf
-        <table class="table table-bordered table-striped">
-            <thead>
-            <tr>
-                <th>Name of Experience</th>
-                <th>Status</th>
-                <th>Year of Experience</th>
-                <th>Upload Certificate</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1. English Medium School
-                    Survey
-                </td>
-                <td>
-                    <select id="english_medium" name="e_m_s_s" class="form-control">
-                        <option value="1"
-                                    @if(isset($experiences))
-                                    @if($experiences->e_m_s_s=='1')
-                                    selected
-                                    @endif
-                                    @endif
-                        >Not Experienced</option>
-                        <option value="2"
-                        @if(isset($experiences))
-                        @if($experiences->e_m_s_s=='2')
-                        selected
-                        @endif
-                        @endif
-                        >Experienced</option>
-                    </select>
-                </td>
-                <td><input type="number" name="e_m_s_s_experience" value="{{isset($experiences)?$experiences->e_m_s_s_experience:''}}"/></td>
-                <td><input type="file"/></td>
-            </tr>
-            <tr>
-                <td>2. BANBEIS PEC Survey
-                </td>
-                <td>
-                    <select id="" name="b_p_s" class="form-control">
-                        
-                        <option value="1" 
-                        @if(isset($experiences))
-                        @if($experiences->b_p_s=='1')
-                        selected
-                        @endif
-                        @endif
-                        >Not Experienced</option>
-                        <option value="2"
-                        @if(isset($experiences))
-                        @if($experiences->b_p_s=='2')
-                        selected
-                        @endif
-                        @endif
-                        > Experienced</option>
-                    </select>
-                </td>
-                <td><input type="number" name="b_p_s_experience" value="{{isset($experiences)?$experiences->b_p_s_experience:''}}"/></td>
-                <td><input type="file"/></td>
-            </tr>
-            <tr>
-                <td>3. Primary PEC Survey
-                </td>
-                <td>
-                    <select id="" name="p_p_s" class="form-control">
-                        
-                        <option value="1"
-                        @if(isset($experiences))
-                        @if($experiences->p_p_s=='1')
-                        selected
-                        @endif
-                        @endif
-                        >Not Experienced</option>
-                        <option value="2"
-                        @if(isset($experiences))
-                        @if($experiences->p_p_s=='2')
-                        selected
-                        @endif
-                        @endif
-                        > Experienced</option>
-                    </select>
-                </td>
-                <td><input type="number" name="p_p_s_experience" value="{{isset($experiences)?$experiences->p_p_s_experience:''}}"/></td>
-                <td><input type="file"/></td>
-            </tr>
-            <tr>
-                <td>4. CSSR Survey
-                </td>
-                <td>
-                    <select id="" name="c_s" class="form-control">
-                        
-                        <option value="1"
-                        @if(isset($experiences))
-                        @if($experiences->c_s=='1')
-                        selected
-                        @endif
-                        @endif
-                        >Not Experienced</option>
-                        <option value="2"
-                        @if(isset($experiences))
-                        @if($experiences->c_s=='2')
-                        selected
-                        @endif
-                        @endif
-                        > Experienced</option>
-                    </select>
-                </td>
-                <td><input type="number" name="c_s_experience"  value="{{isset($experiences)?$experiences->c_s_experience:''}}"/></td>
-                <td><input type="file"/></td>
-            </tr>
-            <tr>
-                <td>5. Teacher Attrition Survey
-                </td>
-                <td>
-                    <select id="" name="t_a_s" class="form-control">
-                       
-                        <option value="1"
-                        @if(isset($experiences))
-                        @if($experiences->t_a_s=='1')
-                        selected
-                        @endif
-                        @endif
-                        >Not Experienced</option>
-                        <option value="2"
-                        @if(isset($experiences))
-                        @if($experiences->t_a_s=='2')
-                        selected
-                        @endif
-                        @endif
-                        > Experienced</option>
-                    </select>
-                </td>
-                <td><input type="number" name="t_a_s_experience" value="{{isset($experiences)?$experiences->t_a_s_experience:''}}"/></td>
-                <td><input type="file"/></td>
-            </tr>
-            <tr>
-                <td>6. TVET Survey
-                </td>
-                <td>
-                    <select id="" name="t_s" class="form-control">
-                      
-                        <option value="1"
-                        @if(isset($experiences))
-                        @if($experiences->t_s=='1')
-                        selected
-                        @endif
-                        @endif
-                        >Not Experienced</option>
-                        <option value="2"
-                        @if(isset($experiences))
-                        @if($experiences->t_s=='2')
-                        selected
-                        @endif
-                        @endif
-                        > Experienced</option>
-                    </select>
-                </td>
-                <td><input type="number" name="t_s_experience" value="{{isset($experiences)?$experiences->t_s_experience:''}}"/></td>
-                <td><input type="file"/></td>
-            </tr>
-            </tbody>
-        </table>
-
-
-        <br><h4>(B) Add other Survey Experience:</h4>
-        <div class="form-group" >
-            <label class="col-md-4 control-label" for="tvet_survey"> Description of Expericnce</label>
-            <div class="col-md-8">
-                <textarea class="form-control" name="other_survey">{{isset($experiences)?$experiences->other_survey:''}}</textarea>
-                Upload Experience Certificate:<br><input type="file"/>
-            </div>
-        </div>
-        <hr>
-        <div class="container bg-light">
-            <div class="col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Save </button>
-            </div>
-        </div>
-        <br>
-</form>
-    </div>
-</div>
+    
     </div>
 </div>
 </div>

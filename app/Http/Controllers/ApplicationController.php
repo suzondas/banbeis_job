@@ -11,24 +11,23 @@ use App\General_info;
 use App\Employeer;
 use App\User;
 use Auth;
+use Illuminate\Support\Facades\Session;
 
 class ApplicationController extends Controller
 {
     //
      public function create($job_id)
     {
-        //
-        $application = new Application();
-        $employeer = Job::Find($job_id);
-        $application->job_id = $job_id;
-        $application->employeer_id = $employeer->employeer_id;
-        $application->user_id = Auth::user()->id;
-        $application->save();
+        //checking whether use profile is saved or not
 
-        $job = Job::Find($job_id);
+        if(!General_info::where('user_id',Auth::user()->id)->exists() || !Educations::where('user_id',Auth::user()->id)->exists()){
+            Session::flash('message', 'Complete Your Profile First');    
+            return back();
+        }elseif(!Experiences::where('user_id',Auth::user()->id)->exists()){
+                return redirect('/applications/before-submit/'.$job_id);
+        }else{
         return redirect()->back();
-
-        //return redirect('/jobs/show/{employeer->job_id}');
+        }
     }
     public  function show_applicants($job_id)
     {
@@ -36,6 +35,7 @@ class ApplicationController extends Controller
     	$applicants = Application::where('job_id', '=', $job_id)->get();
     	
 for($i=0;$i<sizeof($applicants);$i++){
+
     $total_marks = 0;
     $calculated_marks =[];
     $calculated_marks['age'] = 0;
@@ -64,12 +64,10 @@ for($i=0;$i<sizeof($applicants);$i++){
        $calculated_marks['age']= $age;
 
         $age_marks=0;
-        if($age==18){
-            $age_marks=12;
-        }elseif ($age==19){
-            $age_marks=11;
-        }elseif ($age >= 20 && $age <= 29){
+        if($age>=18 && $age <=30){
             $age_marks=10;
+        }elseif ($age>30){
+            $age_marks=6;
         }
        $calculated_marks['age_marks']= $age_marks;
 
@@ -127,5 +125,23 @@ for($i=0;$i<sizeof($applicants);$i++){
 
         // print_r($applicants); die;
     	return view('employeers.applicants', compact('applicants'));
+    }
+
+    public function withdraw($id){
+        $application = Application::Find($id);
+        $job_id = $application->job_id;
+        $application->delete();
+        $experience=Experiences::where('job_id',$job_id)->delete();
+        return back();
+    }
+
+    public function beforeSubmit($job_id){
+        $job =  Job::find($job_id);
+
+        if(!General_info::where('user_id',Auth::user()->id)->exists() || !Educations::where('user_id',Auth::user()->id)->exists()){
+            Session::flash('message', 'Complete Your Profile First');    
+            return back();
+        }
+        return view('users.experience.index')->with('job',$job);
     }
 }

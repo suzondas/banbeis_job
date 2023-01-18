@@ -39,6 +39,10 @@
 								<td>{{$job->title}}</td>
 								<td>{{$employeer->name}}</td>
 								<td>{{$application->created_at}}</td>
+								<td>
+									<a href="{{url('/jobs/show/'.$job->job_id)}}"><button class="btn btn-warning">View Job</button></a>
+									<a href="{{url('/applications/withdraw/'.$application->id)}}" onclick="return confirm('Are you sure you want to delete this item?');"><button class="btn btn-warning">Withdraw Your Application</button></a>
+								</td>
 							@endforeach
 						@endforeach
 					</tr>

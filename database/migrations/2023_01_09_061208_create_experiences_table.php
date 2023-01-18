@@ -16,6 +16,7 @@ class CreateExperiencesTable extends Migration
         Schema::create('experiences', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id');
+            $table->integer('job_id');
             $table->integer('e_m_s_s');
             $table->integer('b_p_s');
             $table->integer('p_p_s');

@@ -85,6 +85,8 @@ Route::get('/employees/applicants/{job_id}', 'ApplicationController@show_applica
 Route::post('/users/save_general_info', 'General_infoController@store');
 
 
-Route::post('/users/experiences', 'ExperiencesController@store');
+Route::post('/users/experiences/{job_id}', 'ExperiencesController@store');
 Route::post('/users/educations', 'EducationsController@store');
 Route::post('/users/public_profile_marks', 'EducationsController@store');
+Route::get('/applications/withdraw/{id}', 'ApplicationController@withdraw');
+Route::get('/applications/before-submit/{job_id}', 'ApplicationController@beforeSubmit');

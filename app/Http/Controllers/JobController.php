@@ -181,6 +181,6 @@ class JobController extends Controller
         $job = Job::Find($job_id);
         $job->delete();
         Category::where('category_name', '=' , $job->category_name)->increment('no_jobs', -1);
-        return redirect('/jobs');
+        return back();
     }
 }

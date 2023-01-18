@@ -46,11 +46,20 @@
         </style>
     </head>
     <body>
-
+     
     <div class="container-fluid" style="margin-top: 8%">
+        @if(Session::has('message'))
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Message: </strong> {{Session::get('message')}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
         <div class="row" style="padding: 4%">
             <div class="col-lg-7">
                 <h4><b>{{$job->title}}</b></h4>
+          
                 @foreach(Employeer::where('id', '=', $job->employeer_id)->get() as $company)
                     <h5 class="card-subtitle mb-2 text-muted">{{ $company->name }}</h5>
                 @endforeach
@@ -120,6 +129,8 @@
                                     <div class='card-body'>
                                         <b>You have applied this job
                                             at</b> {{date('d-F-Y', strtotime($application->created_at)) }}
+                                            <br>
+                                            <a href="{{url('/applications/withdraw/'.$application->id)}}" onclick="return confirm('Are you sure you want to withdraw?');"><button class="btn btn-warning">Withdraw Your Application</button></a>
                                     </div>
                                 </div>
                                 @php

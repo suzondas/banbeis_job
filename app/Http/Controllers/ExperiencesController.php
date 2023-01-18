@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Experiences;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Application;
+use App\Job;
 
 class ExperiencesController extends Controller
 {
-    public function store (Request $req){
+    public function store (Request $req, $job_id){
 
         try{
             // File uploads
@@ -24,6 +26,7 @@ class ExperiencesController extends Controller
         Experiences::updateOrCreate(
             [
                'user_id'   => Auth::user()->id,
+               'job_id'=> $job_id
             ],
             [
                 'e_m_s_s'=>$req->input('e_m_s_s'),
@@ -44,8 +47,14 @@ class ExperiencesController extends Controller
             ],
         );
 
-        
-      return redirect()->back();
+        $application = new Application();
+        $employeer = Job::Find($job_id);
+        $application->job_id = $job_id;
+        $application->employeer_id = $employeer->employeer_id;
+        $application->user_id = Auth::user()->id;
+        $application->save();
+
+        return redirect('/jobs/show/'.$job_id);
     }catch(\Exception $e){
         dd($e);
     }
