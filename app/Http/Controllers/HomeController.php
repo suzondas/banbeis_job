@@ -44,12 +44,12 @@ class HomeController extends Controller
     {
         return view('users.edit_profile');
     }
-    public function public_profile($user_id)
+    public function public_profile($user_id, $job_id)
     {
         $id = $user_id;
         $general_info = General_info::where('user_id', '=' , $id)->first();
         $educations = Educations::where('user_id', '=' , $id)->first();
-        $experiences = Experiences::where('user_id', '=' , $id)->first();
+        $experiences = Experiences::where(['user_id'=> $id,'job_id'=>$job_id])->first();
        
         return view('users.view_user_from_admin', compact('general_info','experiences','educations'));
     }

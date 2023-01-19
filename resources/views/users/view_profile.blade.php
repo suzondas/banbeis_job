@@ -98,6 +98,7 @@
 @endif
     <div class="container-fluid text-center" style="margin: 0; margin-top: 8%">
         <h2 class="text-center pt-2">Your Profile</h2>
+        <div style="text-align: right;padding-bottom: 10px;"><a href="{{url('/settings/account-delete')}}"  onclick="return confirm('Are you sure want to Apply?');" class="text-right"><button class="btn btn-danger">Delete Account</button></a></div>
     </div>
     <div class="stepper-wrapper">
         <div class="stepper-item {{isset($general_info)?'completed':''}}">
@@ -252,7 +253,7 @@
                             <a class="btn btn-success" target="_blank" href="profile_photos/{{$general_info->birth_reg_num_path}}">View File</a><br>
                             @endif
                             @endif
-                            Upload Birth Registration Certificate:<br>
+                            Upload Birth Registration Certificate: (PDF)<br>
                                        
                             <input type="file" name="birth_reg_num_path"/>
 
@@ -431,7 +432,7 @@
                             <a class="btn btn-success" target="_blank" href="profile_photos/{{$general_info->student_id_path}}">View File</a><br>
                             @endif
                             @endif
-                            Upload ID Card:<br><input class="" type="file" name="student_file"/>
+                            Upload ID Card: (PDF)<br><input class="" type="file" name="student_file"/>
                         </div>
                     </div>
                 </div>
@@ -455,8 +456,8 @@
                 <div class="container">
                     <form action="educations" method="POST" enctype="multipart/form-data">
                     <?php
-                    $sscHscResultArray = ["Not Application"=>0, "A+"=>5,"A"=>4,"A-"=>3.5,"B"=>3,"C"=>2,"D"=>1,
-                    "First_Division"=>5,"Second_Division"=>3,"Third_Division"=>1];
+                    $sscHscResultArray = ["Not Applicable"=>0, "A+"=>5,"A"=>4,"A-"=>3.5,"B"=>3,"C"=>2,"D"=>1,
+                    "First_Division"=>4.5,"Second_Division"=>3.25,"Third_Division"=>1.5];
                     ?>
                     <div class="row">
                         <table class="table table-bordered table-striped">
@@ -487,7 +488,14 @@
                                 </td>
                                 <!--<td><input type="text" name="" class="form-control"></td>
                                 <td><input type="text" name="" class="form-control"></td>-->
-                                <td>Upload Certificate: <input type="file"/></td>
+                                <td>
+                                    @if(isset($educations))
+                                    @if(isset($educations->ssc_path))
+                                    <a class="btn btn-success" target="_blank" href="/profile_photos/{{$educations->ssc_path}}">View File</a><br>
+                                    @endif
+                                    @endif
+                                    Upload Certificate: <input type="file" name="ssc_path"/>
+                                </td>
                             </tr>
                             <tr>
                                 <td>H.S.C/Equivalent</td>
@@ -507,7 +515,14 @@
                                 </td>
                                 <!--<td><input type="text" name="" class="form-control"></td>
                                 <td><input type="text" name="" class="form-control"></td>-->
-                                <td>Upload Certificate: <input type="file"/></td>
+                                <td>
+                                    @if(isset($educations))
+                                    @if(isset($educations->hsc_path))
+                                    <a class="btn btn-success" target="_blank" href="/profile_photos/{{$educations->hsc_path}}">View File</a><br>
+                                    @endif
+                                    @endif
+                                    Upload Certificate: <input type="file" name="hsc_path"/>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Degree(pass)</td>
@@ -534,7 +549,14 @@
                                 </td>
                                 <!--<td><input type="text" name="" class="form-control"></td>
                                 <td><input type="text" name="" class="form-control"></td>-->
-                                <td>Upload Certificate: <input type="file"/></td>
+                                <td>
+                                    @if(isset($educations))
+                                    @if(isset($educations->degree_path))
+                                    <a class="btn btn-success" target="_blank" href="/profile_photos/{{$educations->degree_path}}">View File</a><br>
+                                    @endif
+                                    @endif
+                                    Upload Certificate: <input type="file" name="degree_path"/>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Degree(Honor's)</td>
@@ -562,7 +584,14 @@
                                 </td>
                                 <!--<td><input type="text" name="" class="form-control"></td>
                                 <td><input type="text" name="" class="form-control"></td>-->
-                                <td>Upload Certificate: <input type="file"/></td>
+                                <td>
+                                    @if(isset($educations))
+                                    @if(isset($educations->honors_path))
+                                    <a class="btn btn-success" target="_blank" href="/profile_photos/{{$educations->honors_path}}">View File</a><br>
+                                    @endif
+                                    @endif
+                                    Upload Certificate: <input type="file" name="honors_path"/>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Masters</td>
@@ -582,7 +611,14 @@
                                 </td>
                                 <!--<td><input type="text" name="" class="form-control"></td>
                                 <td><input type="text" name="" class="form-control"></td>-->
-                                <td>Upload Certificate: <input type="file"/></td>
+                                <td>
+                                    @if(isset($educations))
+                                    @if(isset($educations->masters_path))
+                                    <a class="btn btn-success" target="_blank" href="/profile_photos/{{$educations->masters_path}}">View File</a><br>
+                                    @endif
+                                    @endif
+                                    Upload Certificate: <input type="file" name="masters_path"/>
+                                </td>
                             </tr>
                             </tbody>
                         </table>

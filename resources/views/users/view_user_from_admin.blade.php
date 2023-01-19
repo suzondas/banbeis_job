@@ -365,8 +365,8 @@
                 <div class="container">
                     <form action="educations" method="POST" enctype="multipart/form-data">
                     <?php
-                    $sscHscResultArray = ["Not Application"=>0, "A+"=>5,"A"=>4,"A-"=>3.5,"B"=>3,"C"=>2,"D"=>1,
-                    "First_Division"=>5,"Second_Division"=>3,"Third_Division"=>1];
+                    $sscHscResultArray = ["Not Applicable"=>0, "A+"=>5,"A"=>4,"A-"=>3.5,"B"=>3,"C"=>2,"D"=>1,
+                    "First_Division"=>4.5,"Second_Division"=>3.25,"Third_Division"=>1.5];
                     ?>
                     <div class="row">
                         <table class="table table-bordered table-striped">
@@ -377,6 +377,7 @@
                                 <td>Result(Grade/Class)</td>
                                 <!--<td>GPA/Marks</td>
                                 <td>Passing Year</td>-->
+                                <td>Uploaded Documents</td>
                                 
                             </tr>
                             <tr>
@@ -397,7 +398,13 @@
                                 </td>
                                 <!--<td><input type="text" name="" class="form-control"></td>
                                 <td><input type="text" name="" class="form-control"></td>-->
-                                
+                                <td>
+                                    @if(isset($educations))
+                                    @if(isset($educations->ssc_path))
+                                    <a class="btn btn-success" target="_blank" href="/profile_photos/{{$educations->ssc_path}}">View File</a><br>
+                                    @endif
+                                    @endif
+                                </td>
                             </tr>
                             <tr>
                                 <td>H.S.C/Equivalent</td>
@@ -417,7 +424,13 @@
                                 </td>
                                 <!--<td><input type="text" name="" class="form-control"></td>
                                 <td><input type="text" name="" class="form-control"></td>-->
-                                
+                                <td>
+                                    @if(isset($educations))
+                                    @if(isset($educations->hsc_path))
+                                    <a class="btn btn-success" target="_blank" href="/profile_photos/{{$educations->hsc_path}}">View File</a><br>
+                                    @endif
+                                    @endif
+                                </td>
                             </tr>
                             <tr>
                                 <td>Degree(pass)</td>
@@ -444,7 +457,13 @@
                                 </td>
                                 <!--<td><input type="text" name="" class="form-control"></td>
                                 <td><input type="text" name="" class="form-control"></td>-->
-                                
+                                <td>
+                                    @if(isset($educations))
+                                    @if(isset($educations->degree_path))
+                                    <a class="btn btn-success" target="_blank" href="/profile_photos/{{$educations->degree_path}}">View File</a><br>
+                                    @endif
+                                    @endif
+                                </td>
                             </tr>
                             <tr>
                                 <td>Degree(Honor's)</td>
@@ -472,7 +491,13 @@
                                 </td>
                                 <!--<td><input type="text" name="" class="form-control"></td>
                                 <td><input type="text" name="" class="form-control"></td>-->
-                                
+                                <td>
+                                    @if(isset($educations))
+                                    @if(isset($educations->honors_path))
+                                    <a class="btn btn-success" target="_blank" href="/profile_photos/{{$educations->honors_path}}">View File</a><br>
+                                    @endif
+                                    @endif
+                                </td>
                             </tr>
                             <tr>
                                 <td>Masters</td>
@@ -492,7 +517,13 @@
                                 </td>
                                 <!--<td><input type="text" name="" class="form-control"></td>
                                 <td><input type="text" name="" class="form-control"></td>-->
-                                
+                                <td>
+                                    @if(isset($educations))
+                                    @if(isset($educations->masters_path))
+                                    <a class="btn btn-success" target="_blank" href="/profile_photos/{{$educations->masters_path}}">View File</a><br>
+                                    @endif
+                                    @endif
+                                </td>
                             </tr>
                             </tbody>
                         </table>

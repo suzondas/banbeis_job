@@ -23,10 +23,8 @@ class ApplicationController extends Controller
         if(!General_info::where('user_id',Auth::user()->id)->exists() || !Educations::where('user_id',Auth::user()->id)->exists()){
             Session::flash('message', 'Complete Your Profile First');    
             return back();
-        }elseif(!Experiences::where('user_id',Auth::user()->id)->exists()){
-                return redirect('/applications/before-submit/'.$job_id);
         }else{
-        return redirect()->back();
+                return redirect('/applications/before-submit/'.$job_id);
         }
     }
     public  function show_applicants($job_id)

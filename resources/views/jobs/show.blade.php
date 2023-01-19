@@ -139,7 +139,7 @@
                             @endif
                         @endforeach
                         @if ($applied == 0)
-                            <a href="{{url('/apply/'.$job->job_id)}}">
+                            <a href="{{url('/apply/'.$job->job_id)}}"  onclick="return confirm('Are you sure want to Apply?');">
                                 <button type="button" class="btn btn-primary btn btn-block mb-2"><b>Apply this job</b>
                                 </button>
                             </a>
