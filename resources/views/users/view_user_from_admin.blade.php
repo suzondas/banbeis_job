@@ -143,7 +143,7 @@
                                        
                                        @if(isset($general_info))
                                        @if(isset($general_info->nid_path))
-                                       <a class="btn btn-success" target="_blank" href="profile_photos/{{$general_info->nid_path}}">View File</a><br>
+                                       <a class="btn btn-success" target="_blank" href="{{asset('/profile_photos/'.$general_info->nid_path)}}">View File</a><br>
                                        @endif
                                        @endif
                                       
@@ -167,7 +167,7 @@
                                         value="{{isset($general_info)?$general_info->birth_reg_num:''}}">
                                        @if(isset($general_info))
                             @if(isset($general_info->birth_reg_num_path))
-                            <a class="btn btn-success" target="_blank" href="profile_photos/{{$general_info->birth_reg_num_path}}">View File</a><br>
+                            <a class="btn btn-success" target="_blank" href="{{asset('/profile_photos/'.$general_info->birth_reg_num_path)}}">View File</a><br>
                             @endif
                             @endif
                            
@@ -344,7 +344,7 @@
                         <div class="col-md-5">
                             @if(isset($general_info))
                             @if(isset($general_info->student_id_path))
-                            <a class="btn btn-success" target="_blank" href="/profile_photos/{{$general_info->student_id_path}}">View File</a><br>
+                            <a class="btn btn-success" target="_blank" href="{{asset('/profile_photos/'.$general_info->student_id_path))}}">View File</a><br>
                             @endif
                             @endif
                             </div>
