@@ -225,7 +225,7 @@
                                        
                                        @if(isset($general_info))
                                        @if(isset($general_info->nid_path))
-                                       <a class="btn btn-success" target="_blank" href="/profile_photos/{{$general_info->nid_path}}">View File</a><br>
+                                       <a class="btn btn-success" target="_blank" href="{{asset('/profile_photos/'.$general_info->nid_path)}}">View File</a><br>
                                        @endif
                                        @endif
                                        Upload NID:<br>
@@ -250,7 +250,7 @@
                                         value="{{isset($general_info)?$general_info->birth_reg_num:''}}">
                                        @if(isset($general_info))
                             @if(isset($general_info->birth_reg_num_path))
-                            <a class="btn btn-success" target="_blank" href="profile_photos/{{$general_info->birth_reg_num_path}}">View File</a><br>
+                            <a class="btn btn-success" target="_blank" href="{{asset('/profile_photos/'.$general_info->birth_reg_num_path)}}">View File</a><br>
                             @endif
                             @endif
                             Upload Birth Registration Certificate: (PDF)<br>
@@ -429,7 +429,7 @@
                         <div class="col-md-5">
                             @if(isset($general_info))
                             @if(isset($general_info->student_id_path))
-                            <a class="btn btn-success" target="_blank" href="profile_photos/{{$general_info->student_id_path}}">View File</a><br>
+                            <a class="btn btn-success" target="_blank" href="{{asset('/profile_photos/'.$general_info->student_id_path)}}">View File</a><br>
                             @endif
                             @endif
                             Upload ID Card: (PDF)<br><input class="" type="file" name="student_file"/>
@@ -491,7 +491,7 @@
                                 <td>
                                     @if(isset($educations))
                                     @if(isset($educations->ssc_path))
-                                    <a class="btn btn-success" target="_blank" href="/profile_photos/{{$educations->ssc_path}}">View File</a><br>
+                                    <a class="btn btn-success" target="_blank" href="{{asset('/profile_photos/'.$educations->ssc_path)}}">View File</a><br>
                                     @endif
                                     @endif
                                     Upload Certificate: <input type="file" name="ssc_path"/>
@@ -518,7 +518,7 @@
                                 <td>
                                     @if(isset($educations))
                                     @if(isset($educations->hsc_path))
-                                    <a class="btn btn-success" target="_blank" href="/profile_photos/{{$educations->hsc_path}}">View File</a><br>
+                                    <a class="btn btn-success" target="_blank" href="{{asset('/profile_photos/'.$educations->hsc_path)}}">View File</a><br>
                                     @endif
                                     @endif
                                     Upload Certificate: <input type="file" name="hsc_path"/>
@@ -552,7 +552,7 @@
                                 <td>
                                     @if(isset($educations))
                                     @if(isset($educations->degree_path))
-                                    <a class="btn btn-success" target="_blank" href="/profile_photos/{{$educations->degree_path}}">View File</a><br>
+                                    <a class="btn btn-success" target="_blank" href="{{asset('/profile_photos/'.$educations->degree_path)}}">View File</a><br>
                                     @endif
                                     @endif
                                     Upload Certificate: <input type="file" name="degree_path"/>
@@ -587,7 +587,7 @@
                                 <td>
                                     @if(isset($educations))
                                     @if(isset($educations->honors_path))
-                                    <a class="btn btn-success" target="_blank" href="/profile_photos/{{$educations->honors_path}}">View File</a><br>
+                                    <a class="btn btn-success" target="_blank" href="{{asset('/profile_photos/'.$educations->honors_path)}}">View File</a><br>
                                     @endif
                                     @endif
                                     Upload Certificate: <input type="file" name="honors_path"/>
@@ -614,7 +614,7 @@
                                 <td>
                                     @if(isset($educations))
                                     @if(isset($educations->masters_path))
-                                    <a class="btn btn-success" target="_blank" href="/profile_photos/{{$educations->masters_path}}">View File</a><br>
+                                    <a class="btn btn-success" target="_blank" href="{{asset('/profile_photos/'.$educations->masters_path)}}">View File</a><br>
                                     @endif
                                     @endif
                                     Upload Certificate: <input type="file" name="masters_path"/>

@@ -401,7 +401,7 @@
                                 <td>
                                     @if(isset($educations))
                                     @if(isset($educations->ssc_path))
-                                    <a class="btn btn-success" target="_blank" href="/profile_photos/{{$educations->ssc_path}}">View File</a><br>
+                                    <a class="btn btn-success" target="_blank" href="{{asset('/profile_photos/'.$educations->ssc_path)}}">View File</a><br>
                                     @endif
                                     @endif
                                 </td>
@@ -427,7 +427,7 @@
                                 <td>
                                     @if(isset($educations))
                                     @if(isset($educations->hsc_path))
-                                    <a class="btn btn-success" target="_blank" href="/profile_photos/{{$educations->hsc_path}}">View File</a><br>
+                                    <a class="btn btn-success" target="_blank" href="{{asset('/profile_photos/'.$educations->hsc_path)}}">View File</a><br>
                                     @endif
                                     @endif
                                 </td>
@@ -460,7 +460,7 @@
                                 <td>
                                     @if(isset($educations))
                                     @if(isset($educations->degree_path))
-                                    <a class="btn btn-success" target="_blank" href="/profile_photos/{{$educations->degree_path}}">View File</a><br>
+                                    <a class="btn btn-success" target="_blank" href="{{asset('/profile_photos/'.$educations->degree_path)}}">View File</a><br>
                                     @endif
                                     @endif
                                 </td>
@@ -494,7 +494,7 @@
                                 <td>
                                     @if(isset($educations))
                                     @if(isset($educations->honors_path))
-                                    <a class="btn btn-success" target="_blank" href="/profile_photos/{{$educations->honors_path}}">View File</a><br>
+                                    <a class="btn btn-success" target="_blank" href="{{asset('/profile_photos/'.$educations->honors_path)}}">View File</a><br>
                                     @endif
                                     @endif
                                 </td>
@@ -520,7 +520,7 @@
                                 <td>
                                     @if(isset($educations))
                                     @if(isset($educations->masters_path))
-                                    <a class="btn btn-success" target="_blank" href="/profile_photos/{{$educations->masters_path}}">View File</a><br>
+                                    <a class="btn btn-success" target="_blank" href="{{asset('/profile_photos/'.$educations->masters_path)}}">View File</a><br>
                                     @endif
                                     @endif
                                 </td>
