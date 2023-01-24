@@ -54,7 +54,7 @@
 									<a href="{{url('/users/public_profile/'.$applicant->user_id.'/'.$applicant->job_id)}}" style="color: blue; text-decoration: underline;"><button class="btn btn-success">View</button></a> 
 									<br>
 									<br>
-									<a href="{{url('/applications/withdraw/'.$applicant->id)}}" onclick="return confirm('Are you sure you want to delete this item?');" style="color: blue; text-decoration: underline;"><button class="btn btn-danger">Remove Application</button></button></a> 
+									{{-- <a href="{{url('/applications/withdraw/'.$applicant->id)}}" onclick="return confirm('Are you sure you want to delete this item?');" style="color: blue; text-decoration: underline;"><button class="btn btn-danger">Remove Application</button></button></a>  --}}
 
 									{{-- <a href='/users/public_profile_marks/{{$applicant->user_id}}' style="color: blue; text-decoration: underline;">View Marks</a> --}}
 								</td>

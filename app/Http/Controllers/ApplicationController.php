@@ -27,6 +27,17 @@ class ApplicationController extends Controller
                 return redirect('/applications/before-submit/'.$job_id);
         }
     }
+
+    public function show($job_id){
+        $id = Auth::user()->id;
+        $general_info = General_info::where('user_id', '=' , $id)->first();
+        $educations = Educations::where('user_id', '=' , $id)->first();
+        $experiences = Experiences::where(['user_id'=> $id,'job_id'=>$job_id])->first();
+       
+        return view('users.view_user_from_admin', compact('general_info','experiences','educations'));
+    
+    }
+
     public  function show_applicants($job_id)
     {
         $total_marks=0;

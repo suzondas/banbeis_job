@@ -41,7 +41,6 @@
         <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
             <h2 class="text-center p-5 text-success">General Information</h2>
             
-        <form class="form-horizontal" method="POST" action="save_general_info" enctype="multipart/form-data">
             <fieldset>
 
                 <!-- Form Name -->
@@ -353,9 +352,7 @@
             </fieldset>
 
             <hr>
-            
             <br>
-        </form>
     </div>
 
     <div class="tab-pane fade" id="nav-education" role="tabpanel" aria-labelledby="nav-education-tab">
@@ -363,7 +360,6 @@
                 <h3 align="center" class="text-success">Educational Qualifications</h3>
                 <!-- Select Basic-- Result_table -->
                 <div class="container">
-                    <form action="educations" method="POST" enctype="multipart/form-data">
                     <?php
                     $sscHscResultArray = ["Not Applicable"=>0, "A+"=>5,"A"=>4,"A-"=>3.5,"B"=>3,"C"=>2,"D"=>1,
                     "First_Division"=>4.5,"Second_Division"=>3.25,"Third_Division"=>1.5];
@@ -532,7 +528,6 @@
                         <br>
                         <br>
                     </div>
-                    </form>
                 </div>
     </div>
     <div class="tab-pane fade" id="nav-experience" role="tabpanel" aria-labelledby="nav-experience-tab">
@@ -542,183 +537,227 @@
         <h3 align="center" class="text-success"> Experience</h3>
         <h4>(A) BANBEIS Survey and Census</h4>
         <!-- Select Basic -->
-<form action="experiences" method="POST" enctype="multipart/form-data">
     @csrf
-        <table class="table table-bordered table-striped">
-            <thead>
-            <tr>
-                <th>Name of Experience</th>
-                <th>Status</th>
-                <th>Year of Experience</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1. English Medium School
-                    Survey
-                </td>
-                <td>
-                    <select id="english_medium" name="e_m_s_s" class="form-control">
-                        <option value="1"
-                                    @if(isset($experiences))
-                                    @if($experiences->e_m_s_s=='1')
-                                    selected
-                                    @endif
-                                    @endif
-                        >Not Experienced</option>
-                        <option value="2"
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Name of Experience</th>
+            <th>Status</th>
+            <th>Year of Experience</th>
+            <th>Uploaded Documents</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1. English Medium School
+                Survey
+            </td>
+            <td>
+                <select id="english_medium" name="e_m_s_s" class="form-control">
+                    <option value="1"
+                                @if(isset($experiences))
+                                @if($experiences->e_m_s_s=='1')
+                                selected
+                                @endif
+                                @endif
+                    >Not Experienced</option>
+                    <option value="2"
+                    @if(isset($experiences))
+                    @if($experiences->e_m_s_s=='2')
+                    selected
+                    @endif
+                    @endif
+                    >Experienced</option>
+                </select>
+            </td>
+            <td><input type="number" name="e_m_s_s_experience" value="{{isset($experiences)?$experiences->e_m_s_s_experience:''}}"/></td>
+            <td>
                         @if(isset($experiences))
-                        @if($experiences->e_m_s_s=='2')
-                        selected
+                            @if(isset($experiences->e_m_s_s_path))
+                            <a class="btn btn-success" target="_blank" href="{{asset('/profile_photos/'.$experiences->e_m_s_s_path)}}">View File</a><br>
+                            @endif
                         @endif
-                        @endif
-                        >Experienced</option>
-                    </select>
-                </td>
-                <td><input type="number" name="e_m_s_s_experience" value="{{isset($experiences)?$experiences->e_m_s_s_experience:''}}"/></td>
-                
-            </tr>
-            <tr>
-                <td>2. BANBEIS PEC Survey
-                </td>
-                <td>
-                    <select id="" name="b_p_s" class="form-control">
-                        
-                        <option value="1" 
+
+            </td>
+        </tr>
+        <tr>
+            <td>2. BANBEIS PEC Survey
+            </td>
+            <td>
+                <select id="" name="b_p_s" class="form-control">
+                    
+                    <option value="1" 
+                    @if(isset($experiences))
+                    @if($experiences->b_p_s=='1')
+                    selected
+                    @endif
+                    @endif
+                    >Not Experienced</option>
+                    <option value="2"
+                    @if(isset($experiences))
+                    @if($experiences->b_p_s=='2')
+                    selected
+                    @endif
+                    @endif
+                    > Experienced</option>
+                </select>
+            </td>
+            <td><input type="number" name="b_p_s_experience" value="{{isset($experiences)?$experiences->b_p_s_experience:''}}"/></td>
+            <td>
                         @if(isset($experiences))
-                        @if($experiences->b_p_s=='1')
-                        selected
+                            @if(isset($experiences->b_p_s_path))
+                            <a class="btn btn-success" target="_blank" href="{{asset('/profile_photos/'.$experiences->b_p_s_path)}}">View File</a><br>
+                            @endif
                         @endif
+                    </td>
+        </tr>
+        <tr>
+            <td>3. Primary PEC Survey
+            </td>
+            <td>
+                <select id="" name="p_p_s" class="form-control">
+                    
+                    <option value="1"
+                    @if(isset($experiences))
+                    @if($experiences->p_p_s=='1')
+                    selected
+                    @endif
+                    @endif
+                    >Not Experienced</option>
+                    <option value="2"
+                    @if(isset($experiences))
+                    @if($experiences->p_p_s=='2')
+                    selected
+                    @endif
+                    @endif
+                    > Experienced</option>
+                </select>
+            </td>
+            <td><input type="number" name="p_p_s_experience" value="{{isset($experiences)?$experiences->p_p_s_experience:''}}"/></td>
+            <td>
+                    @if(isset($experiences))
+                            @if(isset($experiences->p_p_s_path))
+                            <a class="btn btn-success" target="_blank" href="{{asset('/profile_photos/'.$experiences->p_p_s_path)}}">View File</a><br>
+                            @endif
                         @endif
-                        >Not Experienced</option>
-                        <option value="2"
+                    </td>
+        </tr>
+        <tr>
+            <td>4. CSSR Survey
+            </td>
+            <td>
+                <select id="" name="c_s" class="form-control">
+                    
+                    <option value="1"
+                    @if(isset($experiences))
+                    @if($experiences->c_s=='1')
+                    selected
+                    @endif
+                    @endif
+                    >Not Experienced</option>
+                    <option value="2"
+                    @if(isset($experiences))
+                    @if($experiences->c_s=='2')
+                    selected
+                    @endif
+                    @endif
+                    > Experienced</option>
+                </select>
+            </td>
+            <td><input type="number" name="c_s_experience"  value="{{isset($experiences)?$experiences->c_s_experience:''}}"/></td>
+            <td>
                         @if(isset($experiences))
-                        @if($experiences->b_p_s=='2')
-                        selected
+                            @if(isset($experiences->c_s_path))
+                            <a class="btn btn-success" target="_blank" href="{{asset('/profile_photos/'.$experiences->c_s_path)}}">View File</a><br>
+                            @endif
                         @endif
-                        @endif
-                        > Experienced</option>
-                    </select>
-                </td>
-                <td><input type="number" name="b_p_s_experience" value="{{isset($experiences)?$experiences->b_p_s_experience:''}}"/></td>
-              
-            </tr>
-            <tr>
-                <td>3. Primary PEC Survey
-                </td>
-                <td>
-                    <select id="" name="p_p_s" class="form-control">
-                        
-                        <option value="1"
-                        @if(isset($experiences))
-                        @if($experiences->p_p_s=='1')
-                        selected
-                        @endif
-                        @endif
-                        >Not Experienced</option>
-                        <option value="2"
-                        @if(isset($experiences))
-                        @if($experiences->p_p_s=='2')
-                        selected
-                        @endif
-                        @endif
-                        > Experienced</option>
-                    </select>
-                </td>
-                <td><input type="number" name="p_p_s_experience" value="{{isset($experiences)?$experiences->p_p_s_experience:''}}"/></td>
-               
-            </tr>
-            <tr>
-                <td>4. CSSR Survey
-                </td>
-                <td>
-                    <select id="" name="c_s" class="form-control">
-                        
-                        <option value="1"
-                        @if(isset($experiences))
-                        @if($experiences->c_s=='1')
-                        selected
-                        @endif
-                        @endif
-                        >Not Experienced</option>
-                        <option value="2"
-                        @if(isset($experiences))
-                        @if($experiences->c_s=='2')
-                        selected
-                        @endif
-                        @endif
-                        > Experienced</option>
-                    </select>
-                </td>
-                <td><input type="number" name="c_s_experience"  value="{{isset($experiences)?$experiences->c_s_experience:''}}"/></td>
-             
-            </tr>
-            <tr>
-                <td>5. Teacher Attrition Survey
-                </td>
-                <td>
-                    <select id="" name="t_a_s" class="form-control">
-                       
-                        <option value="1"
-                        @if(isset($experiences))
-                        @if($experiences->t_a_s=='1')
-                        selected
-                        @endif
-                        @endif
-                        >Not Experienced</option>
-                        <option value="2"
-                        @if(isset($experiences))
-                        @if($experiences->t_a_s=='2')
-                        selected
-                        @endif
-                        @endif
-                        > Experienced</option>
-                    </select>
-                </td>
-                <td><input type="number" name="t_a_s_experience" value="{{isset($experiences)?$experiences->t_a_s_experience:''}}"/></td>
-             
-            </tr>
-            <tr>
-                <td>6. TVET Survey
-                </td>
-                <td>
-                    <select id="" name="t_s" class="form-control">
-                      
-                        <option value="1"
-                        @if(isset($experiences))
-                        @if($experiences->t_s=='1')
-                        selected
-                        @endif
-                        @endif
-                        >Not Experienced</option>
-                        <option value="2"
-                        @if(isset($experiences))
-                        @if($experiences->t_s=='2')
-                        selected
-                        @endif
-                        @endif
-                        > Experienced</option>
-                    </select>
-                </td>
-                <td><input type="number" name="t_s_experience" value="{{isset($experiences)?$experiences->t_s_experience:''}}"/></td>
-               
-            </tr>
-            </tbody>
-        </table>
+                    </td>
+        </tr>
+        <tr>
+            <td>5. Teacher Attrition Survey
+            </td>
+            <td>
+                <select id="" name="t_a_s" class="form-control">
+                   
+                    <option value="1"
+                    @if(isset($experiences))
+                    @if($experiences->t_a_s=='1')
+                    selected
+                    @endif
+                    @endif
+                    >Not Experienced</option>
+                    <option value="2"
+                    @if(isset($experiences))
+                    @if($experiences->t_a_s=='2')
+                    selected
+                    @endif
+                    @endif
+                    > Experienced</option>
+                </select>
+            </td>
+            <td><input type="number" name="t_a_s_experience" value="{{isset($experiences)?$experiences->t_a_s_experience:''}}"/></td>
+            <td> @if(isset($experiences))
+                @if(isset($experiences->t_a_s_path))
+                <a class="btn btn-success" target="_blank" href="{{asset('/profile_photos/'.$experiences->t_a_s_path)}}">View File</a><br>
+                @endif
+            @endif
+        </td>
+        </tr>
+        <tr>
+            <td>6. TVET Survey
+            </td>
+            <td>
+                <select id="" name="t_s" class="form-control">
+                  
+                    <option value="1"
+                    @if(isset($experiences))
+                    @if($experiences->t_s=='1')
+                    selected
+                    @endif
+                    @endif
+                    >Not Experienced</option>
+                    <option value="2"
+                    @if(isset($experiences))
+                    @if($experiences->t_s=='2')
+                    selected
+                    @endif
+                    @endif
+                    > Experienced</option>
+                </select>
+            </td>
+            <td><input type="number" name="t_s_experience" value="{{isset($experiences)?$experiences->t_s_experience:''}}"/></td>
+            <td>
+                @if(isset($experiences))
+                @if(isset($experiences->t_s_path))
+                <a class="btn btn-success" target="_blank" href="{{asset('/profile_photos/'.$experiences->t_s_path)}}">View File</a><br>
+                @endif
+            @endif
+        </td>
+        </tr>
+        </tbody>
+    </table>
 
 
-        <br><h4>(B) Add other Survey Experience:</h4>
-        <div class="form-group" >
-            <label class="col-md-4 control-label" for="tvet_survey"> Description of Expericnce</label>
-            <div class="col-md-8">
-                <textarea class="form-control" name="other_survey">{{isset($experiences)?$experiences->other_survey:''}}</textarea>
-                
-            </div>
+    <br><h4>(B) Add other Survey Experience:</h4>
+    <div class="form-group" >
+        <label class="col-md-4 control-label" for="tvet_survey"> Description of Expericnce</label>
+        <div class="col-md-8">
+            <textarea class="form-control" name="other_survey">{{isset($experiences)?$experiences->other_survey:''}}</textarea>
+            <br>
+            @if(isset($experiences))
+            @if(isset($experiences->other_survey_path))
+            <a class="btn btn-success" target="_blank" href="{{asset('/profile_photos/'.$experiences->other_survey_path)}}">View Certificate</a><br>
+            @endif
+        @endif
         </div>
-        <hr>
-        
-        <br>
-</form>
+    </div>
+    <hr>
+    <div class="container bg-light">
+        <div class="col-md-12 text-center">
+            <button type="submit" class="btn btn-primary">Save </button>
+        </div>
+    </div>
+    <br>
     </div>
 </div>
     </div>

@@ -40,8 +40,10 @@
 								<td>{{$employeer->name}}</td>
 								<td>{{$application->created_at}}</td>
 								<td>
-									<a href="{{url('/jobs/show/'.$job->job_id)}}"><button class="btn btn-warning">View Job</button></a>
-									<a href="{{url('/applications/withdraw/'.$application->id)}}" onclick="return confirm('Are you sure you want to delete this item?');"><button class="btn btn-warning">Withdraw Your Application</button></a>
+									<a href="{{url('/jobs/show/'.$job->job_id)}}" target="_blank"><button class="btn btn-secondary">View Circular</button></a>
+									<a href="{{url('/application/'.$job->job_id)}}" target="_blank"><button class="btn btn-success">View Application</button></a>
+									<a href="{{url('/applications/withdraw/'.$application->id)}}" onclick="return confirm('Are you sure you want to delete this item?');"><button class="btn btn-warning">Withdraw Application</button></a>
+			
 								</td>
 							@endforeach
 						@endforeach

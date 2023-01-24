@@ -32,13 +32,13 @@ Auth::routes();
 Route::get('/users/user_dashboard', 'HomeController@index')->name('home');
 Route::get('/users/view_profile', 'HomeController@view_profile');
 Route::get('/users/edit_profile', 'HomeController@edit_profile');
-Route::get('/users/public_profile/{user_id}/{job_id}', 'HomeController@public_profile');
 
 
 //Employeer
 Route::get('/employeers/dashboard', 'EmployeerController@index');
 Route::get('/users/view_profile', 'HomeController@view_profile');
 Route::get('/users/edit_profile', 'HomeController@edit_profile');
+Route::get('/users/public_profile/{user_id}/{job_id}', 'HomeController@public_profile');
 
 //Category Controller
 
@@ -81,13 +81,13 @@ Route::view('/user', 'user');
 //Job application
 Route::get('/apply/{job_id}', 'ApplicationController@create');
 Route::get('/employees/applicants/{job_id}', 'ApplicationController@show_applicants');
-
 Route::post('/users/save_general_info', 'General_infoController@store');
-
+Route::get('/applications/withdraw/{id}', 'ApplicationController@withdraw');
+Route::get('/application/{id}', 'ApplicationController@show');
+Route::get('/applications/before-submit/{job_id}', 'ApplicationController@beforeSubmit');
 
 Route::post('/users/experiences/{job_id}', 'ExperiencesController@store');
 Route::post('/users/educations', 'EducationsController@store');
 Route::post('/users/public_profile_marks', 'EducationsController@store');
-Route::get('/applications/withdraw/{id}', 'ApplicationController@withdraw');
-Route::get('/applications/before-submit/{job_id}', 'ApplicationController@beforeSubmit');
+
 Route::get('/settings/account-delete', 'SettingsController@accountDelete');

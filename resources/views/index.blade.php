@@ -164,7 +164,7 @@
                  @foreach(Job::orderBy('updated_at', 'desc')->take(4)->get() as $job)
                  <div class="col-md-4">
                     <a href="{{url('jobs/show/'.$job->job_id)}}" class="list-group-item d-flex justify-content-between align-items-center pb-0">
-                      <h6 class="font-weight-bold" style="-webkit-box-shadow: 10px -5px 20px -4px rgb(0 0 0 / 75%); -moz-box-shadow: 10px -5px 20px -4px rgba(0,0,0,0.75); box-shadow: 10px -5px 20px -4px rgb(0 0 0 / 75%); padding: 20px;">
+                      <h6 class="font-weight-bold w-100" style="-webkit-box-shadow: 10px -5px 20px -4px rgb(0 0 0 / 75%); -moz-box-shadow: 10px -5px 20px -4px rgba(0,0,0,0.75); box-shadow: 10px -5px 20px -4px rgb(0 0 0 / 75%); padding: 20px;">
                           <small><label class="text-muted far fa-clock"> {{to_time_ago(strtotime($job->updated_at))}}</label></small><br>
                           {{$job->title}}<br>
                           @foreach(Employeer::where('id', '=', $job->employeer_id)->get() as $company)

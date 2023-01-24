@@ -15,20 +15,56 @@ class ExperiencesController extends Controller
         try{
             // File uploads
 
-        //     $student_id_path = null;
-        // //students
-        // if($req->hasFile('student_file')){
-        //     $file_name = Auth::user()->id. '_student_id.' . $req->file('student_file')->extension();
-        //     $req->file('student_file')->move(public_path('profile_photos'), $file_name);
-        //     $student_id_path = $file_name;
-        // }
+            $e_m_s_s_path = null;
+            if($req->hasFile('e_m_s_s_path')){
+                $file_name = Auth::user()->id. '_e_m_s_s_path.' . $req->file('e_m_s_s_path')->extension();
+                $req->file('e_m_s_s_path')->move(public_path('profile_photos'), $file_name);
+                $e_m_s_s_path = $file_name;
+            }
 
-        Experiences::updateOrCreate(
-            [
-               'user_id'   => Auth::user()->id,
-               'job_id'=> $job_id
-            ],
-            [
+            $b_p_s_path = null;
+            if($req->hasFile('b_p_s_path')){
+                $file_name = Auth::user()->id. '_b_p_s_path.' . $req->file('b_p_s_path')->extension();
+                $req->file('b_p_s_path')->move(public_path('profile_photos'), $file_name);
+                $b_p_s_path = $file_name;
+            }
+
+            $p_p_s_path = null;
+            if($req->hasFile('p_p_s_path')){
+                $file_name = Auth::user()->id. '_p_p_s_path.' . $req->file('p_p_s_path')->extension();
+                $req->file('p_p_s_path')->move(public_path('profile_photos'), $file_name);
+                $p_p_s_path = $file_name;
+            }
+
+            $c_s_path = null;
+            if($req->hasFile('c_s_path')){
+                $file_name = Auth::user()->id. '_c_s_path.' . $req->file('c_s_path')->extension();
+                $req->file('c_s_path')->move(public_path('profile_photos'), $file_name);
+                $c_s_path = $file_name;
+            }
+
+            $t_a_s_path = null;
+            if($req->hasFile('t_a_s_path')){
+                $file_name = Auth::user()->id. '_t_a_s_path.' . $req->file('t_a_s_path')->extension();
+                $req->file('t_a_s_path')->move(public_path('profile_photos'), $file_name);
+                $t_a_s_path = $file_name;
+            }
+
+            $t_s_path = null;
+            if($req->hasFile('t_s_path')){
+                $file_name = Auth::user()->id. '_t_s_path.' . $req->file('t_s_path')->extension();
+                $req->file('t_s_path')->move(public_path('profile_photos'), $file_name);
+                $t_s_path = $file_name;
+            }
+
+            $other_survey_path = null;
+            if($req->hasFile('other_survey_path')){
+                $file_name = Auth::user()->id. '_other_survey_path.' . $req->file('other_survey_path')->extension();
+                $req->file('other_survey_path')->move(public_path('profile_photos'), $file_name);
+                $other_survey_path = $file_name;
+            }
+
+            $dataToSave = [
                 'e_m_s_s'=>$req->input('e_m_s_s'),
                 'b_p_s'=>$req->input('b_p_s'),
                 'p_p_s'=>$req->input('p_p_s'),
@@ -43,9 +79,41 @@ class ExperiencesController extends Controller
                 't_a_s_experience'=>$req->input('t_a_s_experience'),
                 't_s_experience'=>$req->input('t_s_experience'),
 
-                'other_survey'=>$req->input('other_survey')
+                'other_survey'=>$req->input('other_survey'),
+            ];
+
+            
+        if(isset($e_m_s_s_path)){
+            $dataToSave["e_m_s_s_path"]=$e_m_s_s_path;
+         }
+        if(isset($b_p_s_path)){
+            $dataToSave["b_p_s_path"]=$b_p_s_path;
+        }
+        if(isset($p_p_s_path)){
+            $dataToSave["p_p_s_path"]=$p_p_s_path;
+        }
+        if(isset($c_s_path)){
+            $dataToSave["c_s_path"]=$c_s_path;
+        }
+        if(isset($t_a_s_path)){
+            $dataToSave["t_a_s_path"]=$t_a_s_path;
+        }
+        if(isset($t_s_path)){
+            $dataToSave["t_s_path"]=$t_s_path;
+        }
+        if(isset($other_survey_path)){
+            $dataToSave["other_survey_path"]=$other_survey_path;
+        }
+
+
+        Experiences::updateOrCreate(
+            [
+               'user_id'   => Auth::user()->id,
+               'job_id'=> $job_id
             ],
+            $dataToSave
         );
+
 
         $application = new Application();
         $employeer = Job::Find($job_id);

@@ -97,7 +97,7 @@
     toastr.error("{{ session()->get('errors')->first() }}");
 @endif
     <div class="container-fluid text-center" style="margin: 0; margin-top: 8%">
-        <h4 class="text-center pt-2"> Complee the following required information <br>to apply for the post:<b><u> {{$job->title}}</u></b></h4>
+        <h4 class="text-center pt-2"> Complete the following required information <br>to apply for the post:<b><u> {{$job->title}}</u></b></h4>
     </div>
     
     <div class="container pt-5"
@@ -143,7 +143,9 @@
                     </select>
                 </td>
                 <td><input type="number" name="e_m_s_s_experience" value="{{isset($experiences)?$experiences->e_m_s_s_experience:''}}"/></td>
-                <td><input type="file"/></td>
+                <td>
+                    <input type="file" name="e_m_s_s_path"/>
+                </td>
             </tr>
             <tr>
                 <td>2. BANBEIS PEC Survey
@@ -168,7 +170,7 @@
                     </select>
                 </td>
                 <td><input type="number" name="b_p_s_experience" value="{{isset($experiences)?$experiences->b_p_s_experience:''}}"/></td>
-                <td><input type="file"/></td>
+                <td><input type="file" name="b_p_s_path"/></td>
             </tr>
             <tr>
                 <td>3. Primary PEC Survey
@@ -193,7 +195,7 @@
                     </select>
                 </td>
                 <td><input type="number" name="p_p_s_experience" value="{{isset($experiences)?$experiences->p_p_s_experience:''}}"/></td>
-                <td><input type="file"/></td>
+                <td><input type="file" name="p_p_s_path"/></td>
             </tr>
             <tr>
                 <td>4. CSSR Survey
@@ -218,7 +220,7 @@
                     </select>
                 </td>
                 <td><input type="number" name="c_s_experience"  value="{{isset($experiences)?$experiences->c_s_experience:''}}"/></td>
-                <td><input type="file"/></td>
+                <td><input type="file" name="c_s_path"/></td>
             </tr>
             <tr>
                 <td>5. Teacher Attrition Survey
@@ -243,7 +245,7 @@
                     </select>
                 </td>
                 <td><input type="number" name="t_a_s_experience" value="{{isset($experiences)?$experiences->t_a_s_experience:''}}"/></td>
-                <td><input type="file"/></td>
+                <td><input type="file" name="t_a_s_path"/></td>
             </tr>
             <tr>
                 <td>6. TVET Survey
@@ -268,7 +270,7 @@
                     </select>
                 </td>
                 <td><input type="number" name="t_s_experience" value="{{isset($experiences)?$experiences->t_s_experience:''}}"/></td>
-                <td><input type="file"/></td>
+                <td><input type="file" name="t_s_path"/></td>
             </tr>
             </tbody>
         </table>
@@ -279,7 +281,7 @@
             <label class="col-md-4 control-label" for="tvet_survey"> Description of Expericnce</label>
             <div class="col-md-8">
                 <textarea class="form-control" name="other_survey">{{isset($experiences)?$experiences->other_survey:''}}</textarea>
-                Upload Experience Certificate:<br><input type="file"/>
+                Upload Experience Certificate:<br><input type="file" name="other_survey_path"/>
             </div>
         </div>
         <hr>
