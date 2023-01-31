@@ -164,6 +164,11 @@ use App\Employeer;
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('register') }}">
+                        <button class="btn btn-secondary"> Register</button>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('login/employeer') }}">
                         <button class="btn btn-secondary">Admin Login</button>
                     </a>
@@ -200,7 +205,7 @@ use App\Employeer;
     </div>
 </div> -->
 <div class="bg-secondary text-white text-center text-lg-start fixed-bottom">
-    <small>2022 &copy; BANBEIS, Dhaka, Bangladesh</small>
+    <small>2022 &copy; BANBEIS, Dhaka, Bangladesh | For technical support: +88 01936583856, suzon.du@hotmail.com</small> 
 </div>
 </body>
 </html>

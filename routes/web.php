@@ -42,13 +42,15 @@ Route::get('/users/public_profile/{user_id}/{job_id}', 'HomeController@public_pr
 
 //Category Controller
 
-Route::get('/categories', 'CategoryController@index');
-Route::get('/categories/create', 'CategoryController@create');
-Route::post('/categories/store', 'CategoryController@store');
-Route::get('/categories/show/{category_id}', 'CategoryController@show');
-Route::get('/categories/edit/{category_id}', 'CategoryController@edit');
-Route::post('/categories/update/{category_id}', 'CategoryController@update');
-Route::get('/categories/delete/{category_id}', 'CategoryController@destroy');
+// Route::middleware(['auth'])->group(function(){
+    Route::get('/categories', 'CategoryController@index');
+    Route::get('/categories/create', 'CategoryController@create');
+    Route::post('/categories/store', 'CategoryController@store');
+    Route::get('/categories/show/{category_id}', 'CategoryController@show');
+    Route::get('/categories/edit/{category_id}', 'CategoryController@edit');
+    Route::post('/categories/update/{category_id}', 'CategoryController@update');
+    Route::get('/categories/delete/{category_id}', 'CategoryController@destroy');
+// });
 
 //User Personal Information
 Route::resource('/users/personalinfo', 'PersonalinfoController');

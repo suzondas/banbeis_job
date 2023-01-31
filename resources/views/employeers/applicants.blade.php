@@ -13,7 +13,7 @@
 			$i = 1
 		@endphp
 		<h6 class="text-center">Applicants Information</h6>
-		<h6 class="text-center">Post: {{Job::where('job_id', '=', $applicants[0]->job_id)->first()->title}}</h6>
+		<h6 class="text-center">Post: {{$job_title}}</h6>
 		<a style="color: blue; text-decoration: underline;" href='/employeers/dashboard'>< Back</a>
 		<table class="table table-bordered  mt-5">
 			<thead>

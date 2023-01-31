@@ -41,6 +41,7 @@ class ApplicationController extends Controller
     public  function show_applicants($job_id)
     {
         $total_marks=0;
+        $job_title= Job::where('job_id', '=', $job_id)->first()->title;
     	$applicants = Application::where('job_id', '=', $job_id)->get();
     	
 for($i=0;$i<sizeof($applicants);$i++){
@@ -73,11 +74,21 @@ for($i=0;$i<sizeof($applicants);$i++){
        $calculated_marks['age']= $age;
 
         $age_marks=0;
-        if($age>=18 && $age <=30){
+
+        if($age>=18 && $age <=20){
             $age_marks=10;
-        }elseif ($age>30){
+        }elseif($age>=21 && $age <=23){
+            $age_marks=8;
+        }
+        elseif($age>=24 && $age <=26){
             $age_marks=6;
         }
+        elseif($age>=27 && $age <=29){
+            $age_marks=4;
+        }elseif ($age>=30){
+            $age_marks=2;
+        }
+
        $calculated_marks['age_marks']= $age_marks;
 
         $education = Educations::where('user_id', '=', $usr_id)->get();
@@ -133,7 +144,7 @@ for($i=0;$i<sizeof($applicants);$i++){
         }
 
         // print_r($applicants); die;
-    	return view('employeers.applicants', compact('applicants'));
+    	return view('employeers.applicants')->with(['applicants'=>$applicants,'job_title'=>$job_title]);
     }
 
     public function withdraw($id){
