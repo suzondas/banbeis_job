@@ -151,7 +151,7 @@ for($i=0;$i<sizeof($applicants);$i++){
         $application = Application::Find($id);
         $job_id = $application->job_id;
         $application->delete();
-        $experience=Experiences::where('job_id',$job_id)->delete();
+        $experience=Experiences::where(['job_id'=>$job_id, 'user_id'=>Auth::user()->id])->delete();
         return back();
     }
 
