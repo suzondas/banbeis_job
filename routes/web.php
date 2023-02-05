@@ -88,7 +88,7 @@ Route::get('/applications/withdraw/{id}', 'ApplicationController@withdraw');
 Route::get('/application/{id}', 'ApplicationController@show');
 Route::get('/applications/before-submit/{job_id}', 'ApplicationController@beforeSubmit');
 
-Route::post('/users/experiences/{job_id}', 'ExperiencesController@store');
+Route::post('/users/experience/{job_id}', 'ExperiencesController@store');
 Route::post('/users/educations', 'EducationsController@store');
 Route::post('/users/public_profile_marks', 'EducationsController@store');
 

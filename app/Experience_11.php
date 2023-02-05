@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Experiences extends Model
+class Experience_11 extends Model
 {
     //
-    protected $table='experiences';
+    protected $table='experience_11';
     protected $guarded=[];
 }

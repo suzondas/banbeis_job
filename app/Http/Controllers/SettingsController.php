@@ -94,7 +94,7 @@ class SettingsController extends Controller
 
         User::find($user_id)->delete();
         General_info::where('user_id',$user_id)->delete();
-        Experiences::where('user_id',$user_id)->delete();
+        // Experiences::where('user_id',$user_id)->delete();
         Educations::where('user_id',$user_id)->delete();
         Application::where('user_id',$user_id)->delete();
         Auth::logout();

@@ -32,7 +32,9 @@ class ApplicationController extends Controller
         $id = Auth::user()->id;
         $general_info = General_info::where('user_id', '=' , $id)->first();
         $educations = Educations::where('user_id', '=' , $id)->first();
-        $experiences = Experiences::where(['user_id'=> $id,'job_id'=>$job_id])->first();
+        $model = '\\App\\'.'Experience_'.$job_id;
+
+        $experiences = $model::where(['user_id'=> $id,'job_id'=>$job_id])->first();
        
         return view('users.view_user_from_admin', compact('general_info','experiences','educations'));
     
@@ -40,31 +42,32 @@ class ApplicationController extends Controller
 
     public  function show_applicants($job_id)
     {
+        if($job_id ==11){
         $total_marks=0;
         $job_title= Job::where('job_id', '=', $job_id)->first()->title;
-    	$applicants = Application::where('job_id', '=', $job_id)->get();
+        $applicants = Application::where('job_id', '=', $job_id)->get();
     	
-for($i=0;$i<sizeof($applicants);$i++){
+    for($i=0;$i<sizeof($applicants);$i++){
 
-    $total_marks = 0;
-    $calculated_marks =[];
-    $calculated_marks['age'] = 0;
-    $calculated_marks['age_marks']= 0;
+        $total_marks = 0;
+        $calculated_marks =[];
+        $calculated_marks['age'] = 0;
+        $calculated_marks['age_marks']= 0;
 
-    $calculated_marks['ssc']= 0;
+        $calculated_marks['ssc']= 0;
         $calculated_marks['hsc']= 0;
         $calculated_marks['degree']= 0;
         $calculated_marks['honors']= 0;
         $calculated_marks['masters']= 0;
-    $calculated_marks['education_marks']=0;
+        $calculated_marks['education_marks']=0;
 
-    $calculated_marks['exp_e_m_s_s']=0;
-    $calculated_marks['exp_b_p_s']=0;
-    $calculated_marks['exp_p_p_s']=0;
-    $calculated_marks['exp_c_s']=0;
-    $calculated_marks['exp_t_a_s']=0;
-    $calculated_marks['exp_t_s']=0;
-    $calculated_marks['exp_marks']=0;
+        $calculated_marks['exp_e_m_s_s']=0;
+        $calculated_marks['exp_b_p_s']=0;
+        $calculated_marks['exp_p_p_s']=0;
+        $calculated_marks['exp_c_s']=0;
+        $calculated_marks['exp_t_a_s']=0;
+        $calculated_marks['exp_t_s']=0;
+        $calculated_marks['exp_marks']=0;
 
     try{
         $usr_id=$applicants[$i]->user_id;
@@ -100,7 +103,9 @@ for($i=0;$i<sizeof($applicants);$i++){
         $calculated_marks['masters']= $education[0]->masters;
         $calculated_marks['education_marks']= $education_marks;
 
-        $exp = Experiences::where('user_id', '=', $usr_id)->get();
+        $model = '\\App\\'.'Experience_'.$job_id;
+
+        $exp = $model::where('user_id', '=', $usr_id)->get();
         $exp_e_m_s_s=0;
         $exp_b_p_s=0;
         $exp_p_p_s=0;
@@ -136,22 +141,25 @@ for($i=0;$i<sizeof($applicants);$i++){
         $calculated_marks['exp_marks']=$exp_marks;
 
         $total_marks=$age_marks+$education_marks+$exp_marks;
-    }catch(\Exception $e){
-        $total_marks = 0;
-    }
+        }catch(\Exception $e){
+            $total_marks = 0;
+        }
         $applicants[$i]->total_marks=$total_marks;
         $applicants[$i]->calculated_marks=$calculated_marks;
         }
 
         // print_r($applicants); die;
     	return view('employeers.applicants')->with(['applicants'=>$applicants,'job_title'=>$job_title]);
+        
+        }
     }
 
     public function withdraw($id){
         $application = Application::Find($id);
         $job_id = $application->job_id;
         $application->delete();
-        $experience=Experiences::where('job_id',$job_id)->delete();
+        $model = '\\App\\'.'Experience_'.$job_id;
+        $experience=$model::where('job_id',$job_id)->delete();
         return back();
     }
 
@@ -162,6 +170,6 @@ for($i=0;$i<sizeof($applicants);$i++){
             Session::flash('message', 'Complete Your Profile First');    
             return back();
         }
-        return view('users.experience.index')->with('job',$job);
+        return view('users.experience.'.'experience_'.$job_id)->with('job',$job);
     }
 }

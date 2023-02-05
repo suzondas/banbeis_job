@@ -98,7 +98,7 @@
 @endif
     <div class="container-fluid text-center" style="margin: 0; margin-top: 8%">
         <h2 class="text-center pt-2">Your Profile</h2>
-        <div style="text-align: right;padding-bottom: 10px;"><a href="{{url('/settings/account-delete')}}"  onclick="return confirm('Are you sure want to Apply?');" class="text-right"><button class="btn btn-danger">Delete Account</button></a></div>
+        <!-- <div style="text-align: right;padding-bottom: 10px;"><a href="{{url('/settings/account-delete')}}"  onclick="return confirm('Are you sure want to Apply?');" class="text-right"><button class="btn btn-danger">Delete Account</button></a></div> -->
     </div>
     <div class="stepper-wrapper">
         <div class="stepper-item {{isset($general_info)?'completed':''}}">
@@ -457,8 +457,13 @@
                     <form action="educations" method="POST" enctype="multipart/form-data">
                     <?php
                     $sscHscResultArray = ["Not Applicable"=>0, "A+"=>5,"A"=>4,"A-"=>3.5,"B"=>3,"C"=>2,"D"=>1,
-                    "First_Division"=>4.5,"Second_Division"=>3.25,"Third_Division"=>1.5];
+                    "First_Division"=>'4.0',"Second_Division"=>'3.0',"Third_Division"=>'2.0'];
+
+
+                    $honsMastersResultArray = ["Not Applicable"=>0, "A+"=>4,"A"=>3.5,"A-"=>3.0,"B"=>2.5,"C"=>2,"D"=>1,
+                    "First_Division"=>'4.0',"Second_Division"=>'3.0',"Third_Division"=>'2.0'];
                     ?>
+                    
                     <div class="row">
                         <table class="table table-bordered table-striped">
                             <tbody>
@@ -536,7 +541,7 @@
                                  </td>--}}
                                 <td>
                                     <select name="degree">
-                                        @foreach($sscHscResultArray as $key=>$val)
+                                        @foreach($honsMastersResultArray as $key=>$val)
                                         <option value="{{$val}}"
                                         @if(isset($educations))
                                         @if($educations->degree==$val)
@@ -571,7 +576,7 @@
                                 </td>--}}
                                 <td>
                                     <select name="honors">
-                                        @foreach($sscHscResultArray as $key=>$val)
+                                        @foreach($honsMastersResultArray as $key=>$val)
                                         <option value="{{$val}}"
                                         @if(isset($educations))
                                         @if($educations->honors==$val)
@@ -598,7 +603,7 @@
                                 {{--<td></td>--}}
                                 <td>
                                     <select name="masters">
-                                        @foreach($sscHscResultArray as $key=>$val)
+                                        @foreach($honsMastersResultArray as $key=>$val)
                                         <option value="{{$val}}"
                                         @if(isset($educations))
                                         @if($educations->masters==$val)

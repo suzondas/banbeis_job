@@ -36,9 +36,8 @@ class HomeController extends Controller
         $id = Auth::user()->id;
         $general_info = General_info::where('user_id', '=' , $id)->first();
         $educations = Educations::where('user_id', '=' , $id)->first();
-        $experiences = Experiences::where('user_id', '=' , $id)->first();
        
-        return view('users.view_profile', compact('general_info','experiences','educations'));
+        return view('users.view_profile', compact('general_info','educations'));
     }
     public function edit_profile()
     {
@@ -49,7 +48,8 @@ class HomeController extends Controller
         $id = $user_id;
         $general_info = General_info::where('user_id', '=' , $id)->first();
         $educations = Educations::where('user_id', '=' , $id)->first();
-        $experiences = Experiences::where(['user_id'=> $id,'job_id'=>$job_id])->first();
+        $model = '\\App\\'.'Experience_'.$job_id;
+        $experiences = $model::where(['user_id'=> $id,'job_id'=>$job_id])->first();
        
         return view('users.view_user_from_admin', compact('general_info','experiences','educations'));
     }

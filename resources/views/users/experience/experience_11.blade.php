@@ -108,7 +108,7 @@
         <h3 align="center" class="text-success"> Experience</h3>
         <h4>(A) BANBEIS Survey and Census</h4>
         <!-- Select Basic -->
-<form action="{{url('/users/experiences/'.$job->job_id)}}" method="POST" enctype="multipart/form-data">
+<form action="{{url('/users/experience/'.$job->job_id)}}" method="POST" enctype="multipart/form-data">
     @csrf
         <table class="table table-bordered table-striped">
             <thead>
