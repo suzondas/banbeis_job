@@ -93,6 +93,9 @@ use App\Employeer;
         #job_post_link a:hover {
             text-decoration: underline;
         }
+        .navbar {
+            background: skyblue !important;
+        }
     </style>
 </head>
 <body>

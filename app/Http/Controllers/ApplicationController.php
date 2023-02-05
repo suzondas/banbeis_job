@@ -151,6 +151,8 @@ class ApplicationController extends Controller
         // print_r($applicants); die;
     	return view('employeers.applicants')->with(['applicants'=>$applicants,'job_title'=>$job_title]);
         
+        }elseif($job_id=12){
+            
         }
     }
 
@@ -159,7 +161,7 @@ class ApplicationController extends Controller
         $job_id = $application->job_id;
         $application->delete();
         $model = '\\App\\'.'Experience_'.$job_id;
-        $experience=model::where(['job_id'=>$job_id, 'user_id'=>Auth::user()->id])->delete();
+        $experience=$model::where(['job_id'=>$job_id, 'user_id'=>Auth::user()->id])->delete();
         return back();
     }
 
