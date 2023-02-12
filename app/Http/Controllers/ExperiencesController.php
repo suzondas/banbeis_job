@@ -12,7 +12,7 @@ class ExperiencesController extends Controller
 {
     public function store (Request $req, $job_id){
 
-            if($job_id == 11){
+            if(in_array($job_id,array('11','13'))){
 
             try{
                 // File uploads
@@ -131,5 +131,47 @@ class ExperiencesController extends Controller
         }
 
         }
+        elseif($job_id == 12){
+            try{
+            $dataToSave = [
+                'eiin'=>$req->input('eiin'),
+                'education_level'=>$req->input('education_level'),
+                'institute_name'=>$req->input('institute_name'),
+                'district'=>$req->input('district'),
+                'upazila'=>$req->input('upazila'),
+                'subject'=>$req->input('subject'),
+
+                'bmed'=>$req->input('bmed'),
+                'ict_training'=>$req->input('ict_training'),
+                'ict_diploma'=>$req->input('ict_diploma'),
+                'ict_graduate'=>$req->input('ict_graduate'),
+                'district_ambassador'=>$req->input('district_ambassador'),
+                'muktopath_content_developer'=>$req->input('muktopath_content_developer'),
+            ];
+            $model = '\\App\\'.'Experience_'.$job_id;
+
+            $model::updateOrCreate(
+                [
+                'user_id'   => Auth::user()->id,
+                'job_id'=> $job_id
+                ],
+                $dataToSave
+            );
+
+            $application = new Application();
+            $employeer = Job::Find($job_id);
+            $application->job_id = $job_id;
+            $application->employeer_id = $employeer->employeer_id;
+            $application->user_id = Auth::user()->id;
+            $application->save();
+
+            
+            return redirect('/jobs/show/'.$job_id);
+        }catch(\Exception $e){
+            dd($e);
+        }
+
+        }
+
     }
 }

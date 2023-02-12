@@ -208,10 +208,16 @@
                 
             </div>
             <div class="col-lg-6">
+            <?php 
+                                        date_default_timezone_set('Asia/Dhaka');
+                                        $date_now = date('Y-m-d', strtotime('+5 hours')) ;
+                                       ?>
               @if ($jobs->count() == 0)
                 <h6>No jobs found</h6>
               @else
               @foreach($jobs as $job)
+              @if($date_now < $job->deadline)
+
                 <a href="jobs/show/{{$job->job_id}}">
                   <div class="card mb-3" id="job_post" style="width: 100%; list-style: none">
                     <div class="card-body">
@@ -241,6 +247,8 @@
                     </div>
                 </div>
               </a>
+              @endif
+
               @endforeach
               @endif
             </div>

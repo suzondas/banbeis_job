@@ -19,6 +19,7 @@ class CreateExperience12Table extends Migration
             $table->integer('job_id');
             $table->string('eiin');
             $table->string('institute_name');
+            $table->string('education_level');
             $table->string('district');
             $table->string('upazila');
             $table->string('subject');
@@ -28,6 +29,7 @@ class CreateExperience12Table extends Migration
             $table->string('ict_graduate');
             $table->string('district_ambassador');
             $table->string('muktopath_content_developer');
+            
             $table->timestamps();
         });
     }

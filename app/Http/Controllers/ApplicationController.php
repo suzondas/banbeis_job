@@ -36,18 +36,18 @@ class ApplicationController extends Controller
 
         $experiences = $model::where(['user_id'=> $id,'job_id'=>$job_id])->first();
        
-        return view('users.view_user_from_admin', compact('general_info','experiences','educations'));
+        return view('users.view_user_from_admin_'.$job_id, compact('general_info','experiences','educations'));
     
     }
 
     public  function show_applicants($job_id)
     {
-        if($job_id ==11){
+        if(in_array($job_id,array('11','13'))){
         $total_marks=0;
         $job_title= Job::where('job_id', '=', $job_id)->first()->title;
         $applicants = Application::where('job_id', '=', $job_id)->get();
     	
-    for($i=0;$i<sizeof($applicants);$i++){
+        for($i=0;$i<sizeof($applicants);$i++){
 
         $total_marks = 0;
         $calculated_marks =[];
@@ -149,10 +149,14 @@ class ApplicationController extends Controller
         }
 
         // print_r($applicants); die;
-    	return view('employeers.applicants')->with(['applicants'=>$applicants,'job_title'=>$job_title]);
+    	return view('employeers.applicants_'.$job_id)->with(['applicants'=>$applicants,'job_title'=>$job_title]);
         
         }elseif($job_id=12){
-            
+            $total_marks=0;
+            $job_title= Job::where('job_id', '=', $job_id)->first()->title;
+            $applicants = Application::where('job_id', '=', $job_id)->get();
+    	    return view('employeers.applicants_'.$job_id)->with(['applicants'=>$applicants,'job_title'=>$job_title]);
+
         }
     }
 

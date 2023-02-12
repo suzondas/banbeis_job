@@ -100,4 +100,25 @@ class SettingsController extends Controller
         Auth::logout();
         return redirect('/');
     }
+
+    public function getEiinDetail($eiin){
+    $eiin=112211;
+        $conn = oci_connect('survey2022', 'Survey2022#banbeis', '192.168.245.33/orcl');
+        if (!$conn) {
+            $e = oci_error();
+            trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+        }else{
+            $sql = '
+            SELECT i.INSTITUTE_NAME_NEW, i.eiin, d.DISTRICT_NAME , t.THANA_NAME, lel.EDUCATION_LEVEL_NAME FROM INSTITUTES i , DISTRICTS d , THANAS t, LOOKUP_EDUCATION_LEVELS lel
+            WHERE i.DISTRICT_ID = d.DISTRICT_ID and i.THANA_ID = t.THANA_ID and i.EDUCATION_LEVEL_ID = lel.EDUCATION_LEVEL_ID AND i.EIIN =:eiin';
+            $stid = oci_parse($conn, $sql);
+            
+            oci_bind_by_name($stid, ':eiin', $eiin);
+            oci_execute($stid);
+            while (($row = oci_fetch_array($stid, OCI_ASSOC)) != false) {
+                var_dump($row);
+            }
+        }
+        
+    }
 }

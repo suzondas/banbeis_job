@@ -42,8 +42,9 @@
 											</a>
 										</td>
 										<td>
-											<a href="{{url('/jobs/edit/'.$job->job_id)}}" style="color: blue; text-decoration: underline;">Edit</a> | 
-											<a href="{{url('/jobs/delete/'.$job->job_id)}}" onclick="return confirm('Are you sure you want to delete this item?');" style="color: blue; text-decoration: underline;">Delete</a>
+											<a href="{{url('/jobs/edit/'.$job->job_id)}}" style="color: blue; text-decoration: underline;">Edit</a> 
+											 
+											<!--| <a href="{{url('/jobs/delete/'.$job->job_id)}}" onclick="return confirm('Are you sure you want to delete this item?');" style="color: blue; text-decoration: underline;">Delete</a> -->
 										</td>
 									</tr>
 							@endforeach

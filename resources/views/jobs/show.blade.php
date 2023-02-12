@@ -116,7 +116,11 @@
             </div>
             <div class="col-lg-4">
                 <div class="card mb-3" style="border:none">
-                    <p><b>Application Deadline:</b> {{date('d-F-Y', strtotime($job->deadline)+ 6*3600) }}</p>
+                <?php 
+                                        date_default_timezone_set('Asia/Dhaka');
+                                        $date_now = date('Y-m-d', strtotime('+5 hours')) ;
+                                       ?>
+                    <p><b>Application Deadline:</b> {{date('d-F-Y', strtotime($job->deadline)) }}</p>
                     @if(Auth::guard('web')->check())
 
                         @php
@@ -127,10 +131,15 @@
                                 <div class="card">
                                     <div class='card-header'><b>Applied Status</b></div>
                                     <div class='card-body'>
+                                    
+                                        @if($date_now > $job->deadline)
+                                        Time is Over!
+                                        @else
                                         <b>You have applied this job
                                             at</b> {{date('d-F-Y', strtotime($application->created_at)) }}
                                             <br>
                                             <a href="{{url('/applications/withdraw/'.$application->id)}}" onclick="return confirm('Are you sure you want to withdraw?');"><button class="btn btn-warning">Withdraw Your Application</button></a>
+                                        @endif
                                     </div>
                                 </div>
                                 @php
@@ -139,20 +148,31 @@
                             @endif
                         @endforeach
                         @if ($applied == 0)
+                       
+                                        @if($date_now > $job->deadline)
+                                        Time is Over!
+                                        @else
                             <a href="{{url('/apply/'.$job->job_id)}}"  onclick="return confirm('Are you sure want to Apply?');">
                                 <button type="button" class="btn btn-primary btn btn-block mb-2"><b>Apply this job</b>
                                 </button>
                             </a>
                             <span class="text-danger">Before Apply make sure you completed your profile</span>
                             {{--<button type="button" class="btn btn-light btn btn-block"><b>Save for later</b></button>--}}
+                            @endif
                         @endif
                     @elseif(Auth::guard('employeer')->check())
                         
                     @else
+                  
+                                        @if($date_now > $job->deadline)
+                                        Time is Over!
+                                        @else
                     <a href="{{url('login')}}">
                             <button type="button" class="btn btn-primary btn btn-block mb-2"><b>Apply this job</b>
                             </button>
                         </a>
+                        @endif
+                      
                     @endif
                 </div>
                 <div class="card mb-3">

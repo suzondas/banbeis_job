@@ -3,6 +3,7 @@
 	use App\User; 
 	use App\Employeer; 
 	use App\Application;
+	use App\General_info;
 ?>
 @extends('layout.app')
 @section('content')
@@ -14,13 +15,17 @@
 		@endphp
 		<h6 class="text-center">Applicants Information</h6>
 		<h6 class="text-center">Post: {{$job_title}}</h6>
+		<h6 class="text-center">Result will be published after Application Deadline</h6>
+
 		<a style="color: blue; text-decoration: underline;" href='/employeers/dashboard'>< Back</a>
 		<table class="table table-bordered  mt-5">
 			<thead>
-				<th>#</th><th>Applicant Name</th><th>Age Marks</th>
+				<th>#</th><th>Applicant Name</th>
+				<!-- <th>Age Marks</th>
 				<th>Education Marks</th>
-				<th>Experience Marks</th>
-				<th>Total Marks</th>
+				<th>Experience Marks</th> -->
+				<th>Contact</th>
+				<!-- <th>Total Marks</th> -->
 				<th>Action</th>
 			</thead>
 			<tbody>
@@ -30,7 +35,12 @@
 							<tr>
 								<td>{{ $i++ }}</td>
 								<td>{{ $user->name }}</td>
-								<td>Age: {{$applicant->calculated_marks['age']}}<br>
+								<td>
+									<?php $gI = General_info::where('user_id', '=', $applicant->user_id)->first() ?>
+									Phone: {{$gI->contact_num}} <br>
+									Email: {{$gI->email}}
+								</td>
+								<!-- <td>Age: {{$applicant->calculated_marks['age']}}<br>
 								<b>Mark: {{$applicant->calculated_marks['age_marks']}}</b></td>
 								<td>
 									SSC: {{$applicant->calculated_marks['ssc']}}<br>
@@ -48,8 +58,8 @@
 									Teacher Attrition Survey: {{$applicant->calculated_marks['exp_t_a_s']}}<br>
 									TVET Survey: {{$applicant->calculated_marks['exp_t_s']}}<br>
 									<b>Total: {{$applicant->calculated_marks['exp_marks']}}</b>
-								</td>
-								<td><b>{{ $applicant->total_marks }}</b></td>
+								</td> -->
+								<!-- <td><b>{{ $applicant->total_marks }}</b></td> -->
 								<td>
 									<a href="{{url('/users/public_profile/'.$applicant->user_id.'/'.$applicant->job_id)}}" style="color: blue; text-decoration: underline;"><button class="btn btn-success">View</button></a> 
 									<br>

@@ -93,3 +93,4 @@ Route::post('/users/educations', 'EducationsController@store');
 Route::post('/users/public_profile_marks', 'EducationsController@store');
 
 Route::get('/settings/account-delete', 'SettingsController@accountDelete');
+Route::get('/settings/getEiinDetail/{eiin}', 'SettingsController@getEiinDetail');

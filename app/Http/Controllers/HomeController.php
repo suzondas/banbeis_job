@@ -51,6 +51,6 @@ class HomeController extends Controller
         $model = '\\App\\'.'Experience_'.$job_id;
         $experiences = $model::where(['user_id'=> $id,'job_id'=>$job_id])->first();
        
-        return view('users.view_user_from_admin', compact('general_info','experiences','educations'));
+        return view('users.view_user_from_admin_'.$job_id, compact('general_info','experiences','educations'));
     }
 }
