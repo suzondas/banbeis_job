@@ -14,7 +14,7 @@
 		@endphp
 		<h6 class="text-center">Applicants Information</h6>
 		<h6 class="text-center">Post: {{$job_title}}</h6>
-		<a style="color: blue; text-decoration: underline;" href='/employeers/dashboard'>< Back</a>
+		<a style="color: blue; text-decoration: underline;" href='{{url("/employeers/dashboard")}}'>< Back</a>
 		<table class="table table-bordered  mt-5">
 			<thead>
 				<th>#</th><th>Applicant Name</th>

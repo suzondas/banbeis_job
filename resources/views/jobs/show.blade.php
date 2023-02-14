@@ -181,7 +181,7 @@
                     </div>
                     <ul class="list-group list-group-flush font-weight-normal" id="job_summary">
                         <li class="list-group-item"><b>Published
-                                at:</b> {{date('d-F-Y', strtotime($job->updated_at)+ 6*3600) }}</li>
+                                at:</b> {{date('d-F-Y', strtotime($job->created_at)+ 6*3600) }}</li>
                         <li class="list-group-item"><b>Vacancy:</b> {{$job->vacancy}}</li>
                         <li class="list-group-item"><b>Employment Status:</b> {{$job->employment_type}}</li>
                         <li class="list-group-item"><b>Gender:</b> {{$job->gender}}</li>

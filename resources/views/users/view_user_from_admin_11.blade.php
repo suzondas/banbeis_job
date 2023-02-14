@@ -362,11 +362,11 @@
                 <div class="container">
                     <?php
                           $sscHscResultArray = ["Not Applicable"=>0, "A+"=>5,"A"=>4,"A-"=>3.5,"B"=>3,"C"=>2,"D"=>1,
-                          "First_Division"=>'4.0',"Second_Division"=>'3.0',"Third_Division"=>'2.0'];
+                          "First_Division"=>'5.0',"Second_Division"=>'4.0',"Third_Division"=>'3.0'];
 
       
-                          $honsMastersResultArray = ["Not Applicable"=>0, "A+"=>4,"A"=>3.5,"A-"=>3.0,"B"=>2.5,"C"=>2,"D"=>1,
-                          "First_Division"=>'4.0',"Second_Division"=>'3.0',"Third_Division"=>'2.0'];
+                          $honsMastersResultArray = ["Not Applicable"=>0, "A+ (CGPA: 4)"=>4,"A  (CGPA: 3.5 to 3.99)"=>3.5,"A- (CGPA: 3.0 to 3.49)"=>3.0,"B (CGPA: 2.5 to 2.99)"=>2.5,"C (CGPA: 2.0 to 2.49)"=>2,"D (CGPA: 1.0 to 1.99)"=>1,
+                         "First_Division"=>'4.0',"Second_Division"=>'3.0',"Third_Division"=>'2.0'];
                           ?>
                     <div class="row">
                         <table class="table table-bordered table-striped">
@@ -374,7 +374,7 @@
                             <tr>
                                 <td>Examination Name</td>
                                 {{--<td>Year</td>--}}
-                                <td>Result(Grade/Class)</td>
+                                <td>Result(Grade/Division)</td>
                                 <!--<td>GPA/Marks</td>
                                 <td>Passing Year</td>-->
                                 <td>Uploaded Documents</td>

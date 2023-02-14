@@ -171,10 +171,10 @@
                  <div class="col-md-4">
                     <a href="{{url('jobs/show/'.$job->job_id)}}" class="list-group-item d-flex justify-content-between align-items-center pb-0">
                       <h6 class="font-weight-bold w-100" style="-webkit-box-shadow: 10px -5px 20px -4px rgb(0 0 0 / 75%); -moz-box-shadow: 10px -5px 20px -4px rgba(0,0,0,0.75); box-shadow: 10px -5px 20px -4px rgb(0 0 0 / 75%); padding: 20px;">
-                          <small><label class="text-muted far fa-clock"> {{to_time_ago(strtotime($job->updated_at))}}</label></small><br>
-                          {{$job->title}}<br>
+                                                    {{$job->title}}<br>
                           @foreach(Employeer::where('id', '=', $job->employeer_id)->get() as $company)
-                            <label class="text-muted">{{ $company->name }}</label>
+                            <small class="text-muted">Published on: {{to_time_ago(strtotime($job->created_at))}}</small><br>
+                            <small class="text-muted">Deadline: {{ $job->deadline }}</small>
                           @endforeach
                         </h6> 
                         <!-- <span><small><i class="fas fa-chevron-right"></i></small></span> -->

@@ -18,7 +18,7 @@
 		<h6 class="text-center">Result Published On: 09/2/2023</h6>
 		<h6 class="text-center"><button class="btn btn-warning" onclick="window.print()">Print Result</button></h6>
 
-		<a style="color: blue; text-decoration: underline;" href='/employeers/dashboard'>< Back</a>
+		<a style="color: blue; text-decoration: underline;" href='{{url("/employeers/dashboard")}}'>< Back</a>
 		<table class="table table-bordered  mt-5">
 			<thead>
 				<th>#</th><th>Applicant Name</th>
