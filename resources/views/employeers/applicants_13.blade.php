@@ -21,14 +21,16 @@
 		<table class="table table-bordered  mt-5">
 			<thead>
 				<th>#</th><th>Applicant Name</th>
-				<!-- <th>Age Marks</th>
+				<th>Age Marks</th>
 				<th>Education Marks</th>
-				<th>Experience Marks</th> -->
+				<th>Experience Marks</th>
 				<th>Contact</th>
-				<!-- <th>Total Marks</th> -->
+				<th>Total Marks</th>
 				<th>Action</th>
 			</thead>
 			<tbody>
+			<?php $applicants = $applicants->sortByDesc('total_marks'); ?>
+
 				@foreach($applicants as $applicant)
 					@foreach(Job::where('job_id', '=', $applicant->job_id)->get() as $job)
 						@foreach(User::where('id', '=', $applicant->user_id)->get() as $user)
@@ -40,7 +42,7 @@
 									Phone: {{$gI->contact_num}} <br>
 									Email: {{$gI->email}}
 								</td>
-								<!-- <td>Age: {{$applicant->calculated_marks['age']}}<br>
+								<td>Age: {{$applicant->calculated_marks['age']}}<br>
 								<b>Mark: {{$applicant->calculated_marks['age_marks']}}</b></td>
 								<td>
 									SSC: {{$applicant->calculated_marks['ssc']}}<br>
@@ -59,8 +61,8 @@
 									TVET Survey: {{$applicant->calculated_marks['exp_t_s']}}<br>
 									Other Survey: {{$applicant->calculated_marks['exp_others']}}<br>
 									<b>Total: {{$applicant->calculated_marks['exp_marks']}}</b>
-								</td> -->
-								<!-- <td><b>{{ $applicant->total_marks }}</b></td> -->
+								</td>
+								<td><b>{{ $applicant->total_marks }}</b></td>
 								<td>
 									<a href="{{url('/users/public_profile/'.$applicant->user_id.'/'.$applicant->job_id)}}" style="color: blue; text-decoration: underline;"><button class="btn btn-success">View</button></a> 
 									<br>

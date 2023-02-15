@@ -19,7 +19,8 @@
             <label for="eiin">Institute EIIN</label>
 
                 <div class="w-50 d-flex">
-                    <input type="number" class="form-control" id="eiin" name="eiin" style="flex: 1"  required>
+                    <input type="number" class="form-control" id="getEiin"  style="flex: 1"  required>
+                    <input type="hidden" name="eiin" id="eiin" />
                     <button type="button" class="btn btn-primary ml-2" v-on:click="getEiinDetail()">Fetch</button>
                 </div>
             </div>
@@ -29,7 +30,7 @@
             </div>
             <div class="form-group">
                 <label for="institute_name">Education Level</label>
-                <input type="number" class="form-control" id="education_level" name="education_level"   required>
+                <input type="text" class="form-control" id="education_level" name="education_level"   required>
             </div>
             <div class="form-group">
                 <label for="district">District</label>
@@ -199,10 +200,11 @@
         },
         methods: {
             getEiinDetail:function(){
-                console.log('ma')
-                axios.get('http://192.168.245.33/tst/')
+                
+                axios.get('http://192.168.245.33/tst?eiin='+$("#getEiin").val())
                 .then(function (response) {
                    console.log(response);
+                   $("#eiin").val(response.data.EIIN)
                    $("#institute_name").val(response.data.INSTITUTE_NAME_NEW)
                    $("#education_level").val(response.data.EDUCATION_LEVEL_NAME)
                    $("#district").val(response.data.DISTRICT_NAME)
