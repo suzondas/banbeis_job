@@ -26,19 +26,19 @@
             </div>
             <div class="form-group">
                 <label for="institute_name">Institute Name</label>
-                <input type="text" class="form-control" id="institute_name" name="institute_name"   required>
+                <input type="text" class="form-control" id="institute_name" name="institute_name" disabled required>
             </div>
             <div class="form-group">
                 <label for="institute_name">Education Level</label>
-                <input type="text" class="form-control" id="education_level" name="education_level"   required>
+                <input type="text" class="form-control" id="education_level" name="education_level"  disabled  required>
             </div>
             <div class="form-group">
                 <label for="district">District</label>
-                <input type="text" class="form-control" id="district" name="district"   required>
+                <input type="text" class="form-control" id="district" name="district"  disabled  required>
             </div>
             <div class="form-group">
                 <label for="upazila">Upazila</label>
-                <input type="text" class="form-control" id="upazila" name="upazila"  required>
+                <input type="text" class="form-control" id="upazila" name="upazila"  disabled required>
             </div>
             <div class="form-group">
                 <label for="subject">Subject</label>
