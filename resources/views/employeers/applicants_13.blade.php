@@ -15,7 +15,7 @@
 		@endphp
 		<h6 class="text-center">Applicants Information</h6>
 		<h6 class="text-center">Post: {{$job_title}}</h6>
-		<h6 class="text-center">Result will be published after Application Deadline</h6>
+		<h6 class="text-center"><button class="btn btn-warning" onclick="window.print()">Print Result</button></h6>
 
 		<a style="color: blue; text-decoration: underline;" href='{{url("/employeers/dashboard")}}'>< Back</a>
 		<table class="table table-bordered  mt-5">
