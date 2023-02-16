@@ -59,7 +59,7 @@
 									CSSR Survey: {{$applicant->calculated_marks['exp_c_s']}}<br>
 									Teacher Attrition Survey: {{$applicant->calculated_marks['exp_t_a_s']}}<br>
 									TVET Survey: {{$applicant->calculated_marks['exp_t_s']}}<br>
-									Other Survey: {{$applicant->calculated_marks['exp_others']}}<br>
+									Other Experience: {{$applicant->calculated_marks['exp_others']}}<br>
 									<b>Total: {{$applicant->calculated_marks['exp_marks']}}</b>
 								</td>
 								<td><b>{{ $applicant->total_marks }}</b></td>
