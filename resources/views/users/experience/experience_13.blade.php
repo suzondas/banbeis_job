@@ -276,7 +276,7 @@
         </table>
 
 
-        <br><h4>(B) Add other Survey Experience:</h4>
+        <br><h4>(B) Add other Experience:</h4>
         <div class="form-group" >
             <label class="col-md-4 control-label" for="tvet_survey"> Description of Expericnce</label>
             <div class="col-md-8">
