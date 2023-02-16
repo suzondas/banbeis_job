@@ -166,7 +166,7 @@
                                         $date_now = date('Y-m-d', strtotime('+5 hours')) ;
                                        ?>
                  @foreach(Job::orderBy('updated_at', 'desc')->take(4)->get() as $job)
-                 @if($date_now < $job->deadline)
+                 @if($date_now <= $job->deadline)
                                         
                  <div class="col-md-4">
                     <a href="{{url('jobs/show/'.$job->job_id)}}" class="list-group-item d-flex justify-content-between align-items-center pb-0">

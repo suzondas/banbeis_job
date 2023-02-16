@@ -216,7 +216,7 @@
                 <h6>No jobs found</h6>
               @else
               @foreach($jobs as $job)
-              @if($date_now < $job->deadline)
+              @if($date_now <= $job->deadline)
 
                 <a href="jobs/show/{{$job->job_id}}">
                   <div class="card mb-3" id="job_post" style="width: 100%; list-style: none">
