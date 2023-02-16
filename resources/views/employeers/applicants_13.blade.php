@@ -21,10 +21,10 @@
 		<table class="table table-bordered  mt-5">
 			<thead>
 				<th>#</th><th>Applicant Name</th>
+				<th>Contact</th>
 				<th>Age Marks</th>
 				<th>Education Marks</th>
 				<th>Experience Marks</th>
-				<th>Contact</th>
 				<th>Total Marks</th>
 				<th>Action</th>
 			</thead>

@@ -369,7 +369,7 @@
                          "First_Division"=>'4.0',"Second_Division"=>'3.0',"Third_Division"=>'2.0'];
                           ?>
                     <div class="row">
-                        <table class="table table-bordered table-striped">
+                    <table class="table table-bordered table-striped">
                             <tbody>
                             <tr>
                                 <td>Examination Name</td>
@@ -388,7 +388,7 @@
                                         @foreach($sscHscResultArray as $key=>$val)
                                         <option value="{{$val}}"
                                         @if(isset($educations))
-                                        @if($educations->ssc==$val)
+                                        @if(strval($educations->ssc)===strval($val))
                                         selected
                                         @endif
                                         @endif
@@ -414,7 +414,7 @@
                                         @foreach($sscHscResultArray as $key=>$val)
                                         <option value="{{$val}}"
                                         @if(isset($educations))
-                                        @if($educations->hsc==$val)
+                                        @if(strval($educations->hsc)===strval($val))
                                         selected
                                         @endif
                                         @endif
@@ -447,7 +447,7 @@
                                         @foreach($honsMastersResultArray as $key=>$val)
                                         <option value="{{$val}}"
                                         @if(isset($educations))
-                                        @if($educations->degree==$val)
+                                        @if(strval($educations->degree)===strval($val))
                                         selected
                                         @endif
                                         @endif
@@ -481,7 +481,7 @@
                                         @foreach($honsMastersResultArray as $key=>$val)
                                         <option value="{{$val}}"
                                         @if(isset($educations))
-                                        @if($educations->honors==$val)
+                                        @if(strval($educations->honors)===strval($val))
                                         selected
                                         @endif
                                         @endif
@@ -507,7 +507,7 @@
                                         @foreach($honsMastersResultArray as $key=>$val)
                                         <option value="{{$val}}"
                                         @if(isset($educations))
-                                        @if($educations->masters==$val)
+                                        @if(strval($educations->masters)===strval($val))
                                         selected
                                         @endif
                                         @endif
